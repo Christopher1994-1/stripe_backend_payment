@@ -1,0 +1,230 @@
+$borderBlack: 2px solid black;
+$borderWhite: 2px solid white;
+$borderBlackDotted: 2px dotted black;
+$borderWhiteDotted: 2px dotted white;
+$navyBlue:#021F3C;
+
+
+
+body {
+    background-color: #ffffff;
+    padding: 0;
+    margin: 0;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: $navyBlue;
+
+    .firstSide {
+        margin-left: 20px;
+        display: flex;
+        justify-content: space-between;
+        width: 50%;
+
+        a {
+            color: rgb(255, 255, 255);
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: none;
+
+            &:hover {
+                color: #ffffff;
+                text-decoration: underline;
+            }
+        }
+
+        .links {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            justify-content: space-around;
+            width: 68%;
+    
+            a {
+                color: rgb(255, 255, 255);
+                text-decoration: none;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 17px;
+    
+                &:hover {
+                    color: #ffffff;
+                    text-decoration: underline;
+                }
+            }
+    
+        }
+    }
+
+
+    .cart {
+        margin-right: 20px;
+        a {
+            button {
+                background-color: #ffffff;
+                padding: 7px;
+                border-radius: 10px;
+                color: rgb(0, 0, 0);
+                border: none;
+            }
+        }
+    }
+
+    .hamburgerMenu {
+        display: none;
+    }
+}
+
+
+
+.navbar2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $navyBlue;
+    display: none;
+
+
+    .hamburgerMenu {
+        cursor: pointer;
+        color: white;
+    }
+
+
+    .firstSide {
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+
+    .cart {
+        a {
+            button {
+                border: none;
+                padding: 2px;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+
+
+.links2open {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.886);
+    text-align: center;
+    display: none;
+
+    .xbutton {
+        display: flex;
+        justify-content: end;
+        margin-top: 10px;
+        margin-right: 10px;
+
+        button {
+            background-color: #021f3c00;
+            color: white;
+            font-size: 50px;
+            border: none;
+        }
+    }
+
+    a {
+        color: white;
+        font-size: 50px;
+        text-decoration: none;
+        margin-bottom: 5%;
+        margin-top: 2%;
+
+        span {
+            font-size: 20px;
+        }
+
+        #noneSPAN {
+            visibility: hidden;
+        }
+    }
+}
+
+.home2open {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.886);
+    text-align: center;
+    display: none;
+
+    .xbutton {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        margin-right: 10px;
+
+        button {
+            background-color: #021f3c00;
+            color: white;
+            font-size: 50px;
+            border: none;
+        }
+    }
+
+    a {
+        color: white;
+        font-size: 30px;
+        text-decoration: none;
+        margin-bottom: 7%;
+        margin-top: 5%;
+    }
+
+}
+
+.about2open {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.886);
+    text-align: center;
+    display: none;
+
+    .xbutton {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        margin-right: 10px;
+
+        button {
+            background-color: #021f3c00;
+            color: white;
+            font-size: 50px;
+            border: none;
+        }
+    }
+
+    a {
+        color: white;
+        font-size: 30px;
+        text-decoration: none;
+        margin-bottom: 7%;
+        margin-top: 5%;
+    }
+
+}
+
+
+.banner {
+    text-align: center;
+    background-color: #021F3C;
+    padding: 10px;
+    display: none;
+    h1 {
+        color: white;
+    }
+}
+
+

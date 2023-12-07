@@ -1,0 +1,177 @@
+body {
+  background-color: #ffffff;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #021F3C;
+}
+.navbar .firstSide {
+  margin-left: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+.navbar .firstSide a {
+  color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+}
+.navbar .firstSide a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.navbar .firstSide .links {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  justify-content: space-around;
+  width: 68%;
+}
+.navbar .firstSide .links a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+}
+.navbar .firstSide .links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+.navbar .cart {
+  margin-right: 20px;
+}
+.navbar .cart a button {
+  background-color: #ffffff;
+  padding: 7px;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  border: none;
+}
+.navbar .hamburgerMenu {
+  display: none;
+}
+
+.navbar2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #021F3C;
+  display: none;
+}
+.navbar2 .hamburgerMenu {
+  cursor: pointer;
+  color: white;
+}
+.navbar2 .firstSide a {
+  color: white;
+  text-decoration: none;
+}
+.navbar2 .cart a button {
+  border: none;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.links2open {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.886);
+  text-align: center;
+  display: none;
+}
+.links2open .xbutton {
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.links2open .xbutton button {
+  background-color: rgba(2, 31, 60, 0);
+  color: white;
+  font-size: 50px;
+  border: none;
+}
+.links2open a {
+  color: white;
+  font-size: 50px;
+  text-decoration: none;
+  margin-bottom: 5%;
+  margin-top: 2%;
+}
+.links2open a span {
+  font-size: 20px;
+}
+.links2open a #noneSPAN {
+  visibility: hidden;
+}
+
+.home2open {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.886);
+  text-align: center;
+  display: none;
+}
+.home2open .xbutton {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.home2open .xbutton button {
+  background-color: rgba(2, 31, 60, 0);
+  color: white;
+  font-size: 50px;
+  border: none;
+}
+.home2open a {
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  margin-bottom: 7%;
+  margin-top: 5%;
+}
+
+.about2open {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.886);
+  text-align: center;
+  display: none;
+}
+.about2open .xbutton {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.about2open .xbutton button {
+  background-color: rgba(2, 31, 60, 0);
+  color: white;
+  font-size: 50px;
+  border: none;
+}
+.about2open a {
+  color: white;
+  font-size: 30px;
+  text-decoration: none;
+  margin-bottom: 7%;
+  margin-top: 5%;
+}
+
+.banner {
+  text-align: center;
+  background-color: #021F3C;
+  padding: 10px;
+  display: none;
+}
+.banner h1 {
+  color: white;
+}/*# sourceMappingURL=main.css.map */

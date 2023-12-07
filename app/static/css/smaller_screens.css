@@ -1,0 +1,19 @@
+@media (max-width: 1115px) {
+  .navbar .firstSide {
+    width: 53%;
+  }
+}
+@media (max-width: 1000px) {
+  .navbar .firstSide {
+    width: 57%;
+  }
+}
+@media (max-width: 1000px) {
+  .navbar {
+    display: none;
+  }
+  .navbar2 {
+    display: block;
+    display: flex;
+  }
+}/*# sourceMappingURL=smaller_screens.css.map */
