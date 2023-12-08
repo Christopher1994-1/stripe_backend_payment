@@ -5,8 +5,136 @@
 
 {% block content %}
 
+{% load static %}
 <div class="banner">
     <h1>Choose a product</h1>
+</div>
+
+
+<div class="products_showcase">
+
+    <div class="product">
+        
+        <img src="{% static 'images/product1.png' %}" alt="">
+        <div class="info">
+            <h5>Product Name</h5>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit modi cum a quae, sit ut nisi sapiente deserunt temporibus dolorum labore similique et beatae consequatur nesciunt necessitatibus officiis? Adipisci, soluta.</p>
+            <div class="button-price">
+                <button onclick="add_product('1')">Add to Cart</button>
+                <h5>$19.99</h5>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="product">
+        <img src="{% static 'images/product2.png' %}" alt="">
+        <div class="info">
+            <h5>Product Name</h5>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit modi cum a quae, sit ut nisi sapiente deserunt temporibus dolorum labore similique et beatae consequatur nesciunt necessitatibus officiis? Adipisci, soluta.</p>
+            <div class="button-price">
+                <button onclick="add_product('2')">Add to Cart</button>
+                <h5>$9.99</h5>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="product">
+        <img src="{% static 'images/product3.png' %}" alt="">
+        <div class="info">
+            <h5>Product Name</h5>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit modi cum a quae, sit ut nisi sapiente deserunt temporibus dolorum labore similique et beatae consequatur nesciunt necessitatibus officiis? Adipisci, soluta.</p>
+            <div class="button-price">
+                <button onclick="add_product('3')">Add to Cart</button>
+                <h5>$59.99</h5>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="product">
+        <img src="{% static 'images/product4.png' %}" alt="">
+        <div class="info">
+            <h5>Product Name</h5>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit modi cum a quae, sit ut nisi sapiente deserunt temporibus dolorum labore similique et beatae consequatur nesciunt necessitatibus officiis? Adipisci, soluta.</p>
+            <div class="button-price">
+                <button onclick="add_product('4')">Add to Cart</button>
+                <h5>$39.99</h5>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="product">
+        <img src="{% static 'images/product5.png' %}" alt="">
+        <div class="info">
+            <h5>Product Name</h5>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit modi cum a quae, sit ut nisi sapiente deserunt temporibus dolorum labore similique et beatae consequatur nesciunt necessitatibus officiis? Adipisci, soluta.</p>
+            <div class="button-price">
+                <button onclick="add_product('5')">Add to Cart</button>
+                <h5>$79.99</h5>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="product">
+        <img src="{% static 'images/product6.png' %}" alt="">
+        <div class="info">
+            <h5>Product Name</h5>
+            <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit modi cum a quae, sit ut nisi sapiente deserunt temporibus dolorum labore similique et beatae consequatur nesciunt necessitatibus officiis? Adipisci, soluta.</p>
+            <div class="button-price">
+                <button onclick="add_product('1')">Add to Cart</button>
+                <h5>$199.99</h5>
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 {% endblock content %}

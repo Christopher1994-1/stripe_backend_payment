@@ -6,3 +6,7 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'index1.html', {})
+
+
+def cart(request):
+    return render(request, 'pages/cart.html', {})

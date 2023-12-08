@@ -3,6 +3,7 @@ $borderWhite: 2px solid white;
 $borderBlackDotted: 2px dotted black;
 $borderWhiteDotted: 2px dotted white;
 $navyBlue:#021F3C;
+$productBlue:#1c5c9c;
 
 
 
@@ -51,6 +52,42 @@ body {
                 &:hover {
                     color: #ffffff;
                     text-decoration: underline;
+                }
+            }
+
+            .homeDropdown {
+
+
+                .dropdown {
+                    position: absolute;
+                    background-color: black;
+                    border: $borderWhite;
+                    width: 200px;
+                    padding: 10px;
+                    text-align: left;
+                    display: none;
+
+                    a {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            .aboutDropdown {
+
+
+                .dropdown {
+                    position: absolute;
+                    background-color: black;
+                    border: $borderWhite;
+                    width: 200px;
+                    padding: 10px;
+                    text-align: left;
+                    display: none;
+
+                    a {
+                        margin-bottom: 10px;
+                    }
                 }
             }
     
@@ -219,11 +256,80 @@ body {
 
 .banner {
     text-align: center;
-    background-color: #021F3C;
+    background-color: #0b3661;
     padding: 10px;
-    display: none;
     h1 {
         color: white;
+    }
+}
+
+
+
+
+.products_showcase {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    .product {
+        display: flex;
+
+        img {
+            width: 200px;
+            background: radial-gradient(circle, $productBlue, black); /* Adjust colors as needed */
+        }
+
+        .info {
+            padding: 5px;
+            background: linear-gradient(to bottom, #4c4c4c, black);
+            width: 100%;
+
+            h5 {
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                cursor: default;
+            }
+
+            .stars {
+                i {
+                    color:#2f80d2;
+                    cursor: default;
+                }
+            }
+
+            p {
+                color: white;
+                font-size: 10px;
+                font-family: Arial, Helvetica, sans-serif;
+                margin-top: 5px;
+            }
+
+            .button-price {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                button {
+                    background-color: #2f80d2;
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 13px;
+                    color: white;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+
+                h5 {
+                    font-size: 15px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    margin-top: 5px;
+                }
+            }
+        }
     }
 }
 

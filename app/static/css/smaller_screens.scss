@@ -3,8 +3,7 @@ $borderWhite: 2px solid white;
 $borderBlackDotted: 2px dotted black;
 $borderWhiteDotted: 2px dotted white;
 $navyBlue:#021F3C;
-
-
+$productBlue:#1c5c9c;
 
 
 
@@ -22,6 +21,67 @@ $navyBlue:#021F3C;
         .firstSide {
             width: 53%;
 
+        }
+    }
+
+
+    .products_showcase {
+        grid-template-columns: 1fr 1fr;
+    
+        .product {
+            display: flex;
+    
+            img {
+                width: 150px;
+                background: radial-gradient(circle, $productBlue, black); /* Adjust colors as needed */
+            }
+    
+            .info {
+                padding: 5px;
+                background: linear-gradient(to bottom, #4c4c4c, black);
+                width: 100%;
+    
+                h5 {
+                    color: white;
+                    font-family: Arial, Helvetica, sans-serif;
+                    cursor: default;
+                }
+    
+                .stars {
+                    i {
+                        color:#2f80d2;
+                        cursor: default;
+                    }
+                }
+    
+                p {
+                    color: white;
+                    font-size: 10px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    margin-top: 5px;
+                }
+    
+                .button-price {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+    
+                    button {
+                        background-color: #2f80d2;
+                        border: none;
+                        border-radius: 10px;
+                        font-size: 13px;
+                        color: white;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
+    
+                    h5 {
+                        font-size: 15px;
+                        font-family: Arial, Helvetica, sans-serif;
+                        margin-top: 5px;
+                    }
+                }
+            }
         }
     }
 }
@@ -51,5 +111,25 @@ $navyBlue:#021F3C;
     .navbar2 {
         display: block;
         display: flex;
+    }
+}
+
+
+
+
+@media(max-width:760px) {
+    .products_showcase {
+        display: grid;
+        grid-template-columns: 1fr;
+    
+        .product {
+            display: flex;
+    
+            img {
+                width: 150px;
+                background: radial-gradient(circle, $productBlue, black); /* Adjust colors as needed */
+            }
+    
+        }
     }
 }

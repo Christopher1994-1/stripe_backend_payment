@@ -1,4 +1,5 @@
 "use strict";
+var _a;
 let linksTAB = document.getElementById('links2openID');
 let homeTAB = document.getElementById('home2openID');
 let aboutTAB = document.getElementById('about2openID');
@@ -59,3 +60,64 @@ function back_tab2() {
     linksTAB.style.flexDirection = 'column';
 }
 ;
+let isHomeHovering = false;
+let isAboutHovering = false;
+let isOtherHovering = false;
+let nav_normal_home = document.getElementById('homeDrops1');
+function showHome() {
+    let dropdown1 = document.getElementById('dropdownID1');
+    dropdown1.style.display = 'block';
+    dropdown1.style.display = 'flex';
+    dropdown1.style.flexDirection = 'column';
+    isHomeHovering = true;
+}
+;
+function hideHome() {
+    let dropdown1 = document.getElementById('dropdownID1');
+    dropdown1.style.display = 'none';
+    isHomeHovering = false;
+}
+nav_normal_home.addEventListener('mouseover', function () {
+    showHome();
+});
+nav_normal_home.addEventListener('mouseout', function () {
+    hideHome();
+});
+let nav_normal_about = document.getElementById('aboutDrops1');
+function showHome1() {
+    let dropdown1 = document.getElementById('dropdownID2');
+    dropdown1.style.display = 'block';
+    dropdown1.style.display = 'flex';
+    dropdown1.style.flexDirection = 'column';
+    isHomeHovering = true;
+}
+;
+function hideHome1() {
+    let dropdown1 = document.getElementById('dropdownID2');
+    dropdown1.style.display = 'none';
+    isHomeHovering = false;
+}
+nav_normal_about.addEventListener('mouseover', function () {
+    showHome1();
+});
+nav_normal_about.addEventListener('mouseout', function () {
+    hideHome1();
+});
+let product1 = 19.99;
+let product2 = 9.99;
+let product3 = 59.99;
+let product4 = 39.99;
+let product5 = 79.99;
+let product6 = 199.99;
+let cart_num = document.getElementById('cartNum');
+let total = 0;
+let items = [];
+function add_product(product) {
+    items.push(product);
+    let number_of_items = items.length.toString();
+    cart_num.innerHTML = number_of_items;
+}
+(_a = document.getElementById('cartbutton')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () {
+    let string_items = items.join(':');
+    localStorage.setItem('data', string_items);
+});

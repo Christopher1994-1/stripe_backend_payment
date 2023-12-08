@@ -1,11 +1,13 @@
 <div class="navbar" id="oldNav">
 
     <div class="firstSide">
-        <a href="#"><h1>CEJ Kirk</h1></a>
+        <a href="{% url 'index' %}"><h1>CEJ Kirk</h1></a>
 
         <div class="links">
-            <a href="#" id="home-page">Home <i class="fa-solid fa-caret-down"></i></a>
-            <a href="#" id="about-page">About <i class="fa-solid fa-caret-down"></i></a>
+            {% include 'navbar_things/home_dropdown.html'%}
+
+            {% include 'navbar_things/about_dropdown.html'%}
+
             <a href="#" id="about-page">Others <i class="fa-solid fa-caret-down"></i></a>
             <a href="#" id="contact-page">Contact</a>
         </div>
@@ -14,7 +16,7 @@
 
     <div class="cart">
         <!-- <a href="#"><i class="fa-solid fa-cart-shopping"></i></a> -->
-        <a href="#"><button><i class="fa-solid fa-cart-shopping"></i> Cart <span>0</span></button></a>
+        <a href="{% url 'cart' %}" id="cartbutton"><button><i class="fa-solid fa-cart-shopping"></i> Cart <span id="cartNum">0</span></button></a>
         <!-- <span class="dot" id="cart_itemsID">{{items}}</span> -->
     </div>
 
