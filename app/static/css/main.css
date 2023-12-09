@@ -255,6 +255,11 @@ body {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
+.products_showcase .product .info .button-price .added {
+  opacity: 0.5;
+  cursor: not-allowed;
+  display: none;
+}
 .products_showcase .product .info .button-price h5 {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
@@ -263,6 +268,8 @@ body {
 
 .cart_display {
   text-align: center;
+  width: 90%;
+  margin: auto;
   margin-top: 2%;
 }
 .cart_display table {
@@ -271,10 +278,82 @@ body {
   margin-bottom: 20px;
 }
 .cart_display th, .cart_display td {
-  border: 1px solid #dddddd;
+  border: 1px solid #afafaf;
   text-align: left;
+  background-color: #e7e7e7;
   padding: 8px;
+}
+.cart_display th img, .cart_display td img {
+  width: 100px;
+  background: radial-gradient(circle, #1c5c9c, black); /* Adjust colors as needed */
 }
 .cart_display th {
   background-color: #f2f2f2;
+}
+
+.subtotal {
+  display: flex;
+  justify-content: space-between;
+}
+.subtotal .promocode {
+  text-align: left;
+  width: 50%;
+}
+.subtotal .promocode input {
+  border-radius: 10px;
+  border: 1px solid grey;
+}
+.subtotal .promocode input:focus {
+  outline: none;
+}
+.subtotal .promocode button {
+  border: none;
+  border-radius: 10px;
+  background-color: #1c5c9c;
+  color: white;
+}
+.subtotal .subtotal1 {
+  text-align: left;
+  width: 30%;
+}
+.subtotal .subtotal1 .table1 .t1 {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid grey;
+  background-color: #e7e7e7;
+}
+.subtotal .subtotal1 .table1 .t1 .p1 {
+  margin-left: 2px;
+}
+.subtotal .subtotal1 .table1 .t1 .p2 {
+  margin-right: 2px;
+}
+.subtotal .subtotal1 .table1 .t2 {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  background-color: #e7e7e7;
+}
+.subtotal .subtotal1 .table1 .t2 .p1 {
+  margin-left: 2px;
+}
+.subtotal .subtotal1 .table1 .t2 .p2 {
+  margin-right: 2px;
+}
+
+.submitbutton {
+  display: flex;
+  justify-content: end;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+.submitbutton button {
+  border: none;
+  border-radius: 10px;
+  background-color: #1c5c9c;
+  color: white;
+  padding: 10px;
+  font-size: 13px;
 }/*# sourceMappingURL=main.css.map */

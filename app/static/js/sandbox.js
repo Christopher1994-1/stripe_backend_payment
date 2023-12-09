@@ -1,5 +1,5 @@
 "use strict";
-var _a;
+var _a, _b;
 let linksTAB = document.getElementById('links2openID');
 let homeTAB = document.getElementById('home2openID');
 let aboutTAB = document.getElementById('about2openID');
@@ -110,12 +110,24 @@ let product4 = 39.99;
 let product5 = 79.99;
 let product6 = 199.99;
 let cart_num = document.getElementById('cartNum');
+let cart_num2 = document.getElementById('cartNum2');
+let navbar2 = document.getElementById('navbar2');
 let total = 0;
 let items = [];
+function remove_cartBtn(num) {
+    let numBtn = "btn" + num;
+    let addBtn = 'added' + num;
+    let cartBTN = document.getElementById(numBtn);
+    let addedBTN = document.getElementById(addBtn);
+    cartBTN.style.display = 'none';
+    addedBTN.style.display = 'block';
+}
 function add_product(product) {
     items.push(product);
     let number_of_items = items.length.toString();
     cart_num.innerHTML = number_of_items;
+    cart_num2.innerHTML = number_of_items;
+    remove_cartBtn(product);
 }
 function getCookie(name) {
     var _a;
@@ -136,7 +148,7 @@ function lanm(stuff) {
         headers['X-CSRFToken'] = csrfToken;
     }
     ;
-    fetch('/cart', {
+    fetch('/update_cart', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify({ cartItemCount: cartItemCount }),
@@ -144,6 +156,11 @@ function lanm(stuff) {
 }
 let cartID = '';
 (_a = document.getElementById('cartbutton')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function (event) {
+    let string_items = items.join(':');
+    localStorage.setItem('data', string_items);
+    lanm(string_items);
+});
+(_b = document.getElementById('cartbutton1')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function (event) {
     let string_items = items.join(':');
     localStorage.setItem('data', string_items);
     lanm(string_items);

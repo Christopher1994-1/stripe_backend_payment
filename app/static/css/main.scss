@@ -327,6 +327,12 @@ body {
                     font-family: Arial, Helvetica, sans-serif;
                 }
 
+                .added {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                    display: none;
+                }
+
                 h5 {
                     font-size: 15px;
                     font-family: Arial, Helvetica, sans-serif;
@@ -341,6 +347,8 @@ body {
 
 .cart_display {
     text-align: center;
+    width: 90%;
+    margin: auto;
     margin-top: 2%;
 
     table {
@@ -350,12 +358,103 @@ body {
     }
 
     th, td {
-        border: 1px solid #dddddd;
+        border: 1px solid #afafaf;
         text-align: left;
+        background-color: #e7e7e7;
         padding: 8px;
+
+        img {
+            width: 100px;
+            background: radial-gradient(circle, $productBlue, black); /* Adjust colors as needed */
+        }
     }
 
     th {
         background-color: #f2f2f2;
+    }
+}
+
+
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+
+    .promocode {
+        text-align: left;
+        width: 50%;
+
+        input {
+            border-radius: 10px;
+            border: 1px solid grey;
+        }
+        input:focus {
+            outline: none;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            background-color: $productBlue;
+            color: white;
+        }
+
+
+    }
+
+
+    .subtotal1 {
+        text-align: left;
+        width: 30%;
+
+        .table1 {
+
+            .t1 {
+                display: flex;
+                justify-content: space-between;
+                border: 1px solid grey;
+                background-color: #e7e7e7;
+
+                .p1 {
+                    margin-left: 2px;
+                }
+
+                .p2 {
+                    margin-right: 2px;
+                }
+            }
+
+            .t2 {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px solid grey;
+                border-left: 1px solid grey;
+                border-right: 1px solid grey;
+                background-color: #e7e7e7;
+
+                .p1 {
+                    margin-left: 2px;
+                }
+
+                .p2 {
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+}
+
+.submitbutton {
+    display: flex;
+    justify-content: end;
+    margin-top: 2%;
+    margin-bottom: 5%;
+
+    button {
+        border: none;
+        border-radius: 10px;
+        background-color: $productBlue;
+        color: white;
+        padding: 10px;
+        font-size: 13px;
     }
 }

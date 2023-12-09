@@ -172,15 +172,29 @@ let product5:number = 79.99;
 let product6:number = 199.99;
 
 let cart_num:any = document.getElementById('cartNum');
+let cart_num2:any = document.getElementById('cartNum2');
+let navbar2:any = document.getElementById('navbar2');
+
 
 let total:number = 0;
 let items:any = [];
 
+function remove_cartBtn(num:string) {
+    let numBtn:string = "btn" + num;
+    let addBtn:string = 'added' + num;
+    let cartBTN = document.getElementById(numBtn) as HTMLElement;
+    let addedBTN = document.getElementById(addBtn) as HTMLElement;
+
+    cartBTN.style.display = 'none';
+    addedBTN.style.display = 'block';
+}
 
 function add_product(product:string) {
     items.push(product);
     let number_of_items = items.length.toString();
     cart_num.innerHTML = number_of_items;
+    cart_num2.innerHTML = number_of_items;
+    remove_cartBtn(product)
 }
 
 
@@ -216,7 +230,7 @@ function lanm(stuff:string) {
     };
 
     // Make the fetch request
-    fetch('/cart', {
+    fetch('/update_cart', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify({ cartItemCount: cartItemCount }),
@@ -233,7 +247,13 @@ document.getElementById('cartbutton')?.addEventListener('click', function (event
     let string_items = items.join(':');
     localStorage.setItem('data', string_items);
     lanm(string_items)
+})
 
+
+document.getElementById('cartbutton1')?.addEventListener('click', function (event) {
+    let string_items = items.join(':');
+    localStorage.setItem('data', string_items);
+    lanm(string_items)
 })
 
 

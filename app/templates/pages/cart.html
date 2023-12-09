@@ -10,6 +10,7 @@
 <div class="cart_display">
     <h1>Shopping Cart</h1>
 
+    {% load static %}
     <div class="shopping" id="shoppingID">
 
         <table id="tableee">
@@ -22,32 +23,50 @@
                 </tr>
             </thead>
             <tbody>
-
-                <!-- <tr>
-                    <td>Product 1</td>
-                    <td>$19.99</td>
-                    <td>2</td>
-                    <td>$39.98</td>
-                </tr>
-
-                <tr>
-                    <td>Product 2</td>
-                    <td>$29.99</td>
-                    <td>1</td>
-                    <td>$29.99</td>
-                </tr> -->
-
+                {% for i in data %}
+                    <tr>
+                        <td> <img src="{% static i.2%}" alt=""> {{i.0}}</td>
+                        <td>${{i.1}}</td>
+                        <td>1</td>
+                        <td>${{i.1}}</td>
+                    </tr>
+                {% endfor %}
 
                 <!-- Add more rows for other products -->
             </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3">Total</td>
-                    <td>$69.97</td>
-                </tr>
-            </tfoot>
+
         </table>
 
+        <div class="subtotal">
+            <div class="promocode">
+                <h5>Promotion Code</h5>
+                <div class="stuff">
+                    <input type="text" name="" id="" placeholder="JAJ439">
+                    <button>APPLY CODE</button>
+                </div>
+            </div>
+            <div class="subtotal1">
+                <h5>Cart Totals</h5>
+                <div class="table1">
+
+                    <div class="t1">
+                        <p class="p1">Subtotal</p>
+                        <p class="p2">${{total}}</p>
+                    </div>
+
+                    <div class="t2">
+                        <p class="p1">Total</p>
+                        <p class="p2">${{total}}</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="submitbutton">
+            <button>PROCEED TO CHECKOUT</button>
+        </div>
     </div>
 
     <div class="emptycart" id="emptycartID">
@@ -56,8 +75,6 @@
 
     
 </div>
-
-
 
 
 

@@ -1,30 +1,35 @@
 from django.shortcuts import render
 from . import products
-
-# Create your views here.
-
-
-
-def index(request):
-    return render(request, 'index1.html', {})
-
-
 from django.http import JsonResponse
 import json
 
+# Create your views here.
+
+dd = []
+subtotal = []
+
+def index(request):
+    dd.clear()
+    subtotal.clear()
+    return render(request, 'index1.html', {})
+
+
 def cart(request):
+    return render(request, 'pages/cart.html', {'data':dd, 'total':subtotal[0]})
+
+
+def update_card(request):
     if request.method == 'POST':
         # Assuming the data is sent as JSON in the request body
         data = json.loads(request.body)
         cart_item_count = data.get('cartItemCount')
-        data = products.products(cart_item_count)
+        data191 = products.products(cart_item_count)[0]
+        total = products.products(cart_item_count)[1]
         
-        
-        
-        
-        # Return a JSON response (you can customize this based on your needs)
+        for i in data191:
+            dd.append(i)
+        print(data191)
+        subtotal.append(total)
         return JsonResponse({'status': 'success', 'message': 'Cart updated successfully'})
+
     
-    return render(request, 'pages/cart.html', {})
-
-
