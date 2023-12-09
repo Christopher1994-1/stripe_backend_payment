@@ -149,6 +149,10 @@ body {
 }
 
 
+.cahnces {
+    visibility: hidden;
+    position: absolute;
+}
 
 .links2open {
     position: fixed;
@@ -334,3 +338,24 @@ body {
 }
 
 
+
+.cart_display {
+    text-align: center;
+    margin-top: 2%;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+}

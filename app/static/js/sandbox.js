@@ -117,7 +117,34 @@ function add_product(product) {
     let number_of_items = items.length.toString();
     cart_num.innerHTML = number_of_items;
 }
-(_a = document.getElementById('cartbutton')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function () {
+function getCookie(name) {
+    var _a;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return ((_a = parts.pop()) === null || _a === void 0 ? void 0 : _a.split(';').shift()) || null;
+    }
+    return null;
+}
+function lanm(stuff) {
+    const cartItemCount = stuff;
+    const csrfToken = getCookie('csrftoken');
+    const headers = {
+        'Content-Type': 'application/json',
+    };
+    if (csrfToken !== null) {
+        headers['X-CSRFToken'] = csrfToken;
+    }
+    ;
+    fetch('/cart', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ cartItemCount: cartItemCount }),
+    });
+}
+let cartID = '';
+(_a = document.getElementById('cartbutton')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function (event) {
     let string_items = items.join(':');
     localStorage.setItem('data', string_items);
+    lanm(string_items);
 });

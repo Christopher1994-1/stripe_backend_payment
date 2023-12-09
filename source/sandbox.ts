@@ -183,10 +183,59 @@ function add_product(product:string) {
     cart_num.innerHTML = number_of_items;
 }
 
-document.getElementById('cartbutton')?.addEventListener('click', function () {
-    let string_items = items.join(':')
+
+
+
+// Function to retrieve a cookie value by name
+function getCookie(name: string): string | null {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    
+    if (parts.length === 2) {
+        return parts.pop()?.split(';').shift() || null;
+    }
+
+    return null;
+}
+
+function lanm(stuff:string) {
+    // Assume you have some TypeScript variable 'cartItemCount' with the desired data
+    const cartItemCount = stuff // Replace this with your actual data
+
+    // Make an AJAX request to the server to update the cart
+    const csrfToken = getCookie('csrftoken');
+
+    // Prepare headers
+    const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+    };
+
+    // Add CSRF token to headers if available
+    if (csrfToken !== null) {
+        headers['X-CSRFToken'] = csrfToken;
+    };
+
+    // Make the fetch request
+    fetch('/cart', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ cartItemCount: cartItemCount }),
+    })
+
+}
+
+
+
+
+
+let cartID = ''
+document.getElementById('cartbutton')?.addEventListener('click', function (event) {
+    let string_items = items.join(':');
     localStorage.setItem('data', string_items);
+    lanm(string_items)
+
 })
+
 
 
 

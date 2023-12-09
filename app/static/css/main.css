@@ -100,6 +100,11 @@ body {
   border-radius: 10px;
 }
 
+.cahnces {
+  visibility: hidden;
+  position: absolute;
+}
+
 .links2open {
   position: fixed;
   height: 100%;
@@ -254,4 +259,22 @@ body {
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 5px;
+}
+
+.cart_display {
+  text-align: center;
+  margin-top: 2%;
+}
+.cart_display table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.cart_display th, .cart_display td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.cart_display th {
+  background-color: #f2f2f2;
 }/*# sourceMappingURL=main.css.map */
