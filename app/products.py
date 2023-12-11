@@ -25,7 +25,13 @@ def products(data):
         t = products[i][1]
         result.append(e)
         total.append(t)
-    
-    subtotal = sum(total)
         
-    return result, subtotal
+    strTotal = sum(total)
+    indexValue = str(strTotal).index('.')
+    
+    if indexValue == 2:
+        total2 = str(strTotal)[:5]
+    else:
+        total2 = str(strTotal)[:6]
+    
+    return result, total2

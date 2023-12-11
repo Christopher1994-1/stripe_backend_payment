@@ -28,7 +28,6 @@ def update_card(request):
         
         for i in data191:
             dd.append(i)
-        print(data191)
         subtotal.append(total)
         return JsonResponse({'status': 'success', 'message': 'Cart updated successfully'})
 

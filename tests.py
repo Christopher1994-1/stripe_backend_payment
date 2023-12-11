@@ -25,13 +25,19 @@ def products(data):
         result.append(e)
         total.append(t)
     
-    subtotal = sum(total)
-        
-    return result, subtotal
+    strTotal = sum(total)
+    indexValue = str(strTotal).index('.')
+    
+    if indexValue == 2:
+        total2 = str(strTotal)[:5]
+    else:
+        total2 = str(strTotal)[:6]
+    
+    return result, total2
 
 # BUG needs to handle price when 29.384948
 
-g = '1:5:3'
+g = '1:5:2'
 
 c = products(g)
 
