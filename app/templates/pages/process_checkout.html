@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+{% load static %}
+
+
+<div class="checkout">
+    <h1>CEJ Kirk</h1>
+    <p><i class="fa-solid fa-lock"></i> Checkout</p>
+
+    <div class="ballsNlines">
+
+        <div class="checkNball" id="check1">
+            <div class="ball1Check" id="CHECK1"><i class="fa-solid fa-check"></i></div>
+            <p id="infoCHECK">info</p>
+        </div>
+
+        <div class="ballNwrite" id="ball1">
+            <div class="ball"><h5>1</h5></div>
+            <p>info</p>
+        </div>
+
+        <div class="line" id="line1"></div>
+
+        <div class="checkNball" id="check2">
+            <div class="ball1Check" id="CHECK1"><i class="fa-solid fa-check"></i></div>
+            <p id="billCHECK">Billing</p>
+        </div>
+
+        <div class="ballNwrite" id="ball2">
+            <div class="ball"><h5>2</h5></div>
+            <p>Billing</p>
+        </div>
+
+        <div class="line" id="line2"></div>
+
+        <div class="checkNball" id="check3">
+            <div class="ball1Check" id="CHECK1"><i class="fa-solid fa-check"></i></div>
+            <p id="rere">Review</p>
+        </div>
+
+        <div class="ballNwrite" id="ball3">
+            <div class="ball"><h5>3</h5></div>
+            <p>Review</p>
+        </div>
+    </div>
+
+
+
+
+    <div class="first_slide">
+
+    </div>
+
+    <div class="second_slide">
+        <!-- Your HTML structure -->
+        <div id="card-element">
+            <!-- Card number container -->
+            <div id="card-number-element"></div>
+            <!-- Expiration date container -->
+            <div id="card-expiry-element"></div>
+            <!-- CVC container -->
+            <div id="card-cvc-element"></div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="nextbutton">
+    <button onclick="nextProcess()">Next</button>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+
+<script src="{% static 'js/sandbox3.js' %}"></script>
+
+{% endblock content %}

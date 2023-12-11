@@ -32,3 +32,5 @@ def update_card(request):
         return JsonResponse({'status': 'success', 'message': 'Cart updated successfully'})
 
     
+def process_checkout(request):
+    return render(request, 'pages/process_checkout.html', {"data":dd, 'total':subtotal})

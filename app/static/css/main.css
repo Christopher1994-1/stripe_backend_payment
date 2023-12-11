@@ -349,11 +349,88 @@ body {
   margin-top: 2%;
   margin-bottom: 5%;
 }
-.submitbutton button {
+.submitbutton a {
   border: none;
   border-radius: 10px;
   background-color: #1c5c9c;
+  text-decoration: none;
   color: white;
   padding: 10px;
   font-size: 13px;
+}
+
+.checkout {
+  border: 2px dotted black;
+  text-align: center;
+}
+.checkout .ballsNlines {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px dotted black;
+  width: 35%;
+  margin: auto;
+}
+.checkout .ballsNlines .checkNball {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  display: none;
+}
+.checkout .ballsNlines .checkNball .ball1Check {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #1c5c9c;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.checkout .ballsNlines .checkNball .ball1Check i {
+  margin: 0;
+  color: white;
+  cursor: default;
+}
+.checkout .ballsNlines .checkNball p {
+  margin: 0;
+  cursor: default;
+}
+.checkout .ballsNlines .ballNwrite {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.checkout .ballsNlines .ballNwrite .ball {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid black;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+.checkout .ballsNlines .ballNwrite .ball h5 {
+  margin: 0;
+  cursor: default;
+}
+.checkout .ballsNlines .ballNwrite p {
+  margin: 0;
+  cursor: default;
+}
+.checkout .ballsNlines .line {
+  border: 2px solid black;
+  height: 4px;
+  border-radius: 10px;
+  width: 100px;
+  margin-bottom: 10px;
+}
+.checkout .first_slide {
+  display: none;
+}
+.checkout .second_slide {
+  display: none;
 }/*# sourceMappingURL=main.css.map */

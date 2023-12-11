@@ -1,5 +1,5 @@
 "use strict";
-var _a, _b;
+var _a;
 let linksTAB = document.getElementById('links2openID');
 let homeTAB = document.getElementById('home2openID');
 let aboutTAB = document.getElementById('about2openID');
@@ -156,11 +156,6 @@ function lanm(stuff) {
 }
 let cartID = '';
 (_a = document.getElementById('cartbutton')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', function (event) {
-    let string_items = items.join(':');
-    localStorage.setItem('data', string_items);
-    lanm(string_items);
-});
-(_b = document.getElementById('cartbutton1')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', function (event) {
     let string_items = items.join(':');
     localStorage.setItem('data', string_items);
     lanm(string_items);
