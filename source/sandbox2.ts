@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-let clickoff:string = 'false';
 
 function clipOff(num:string) {
     let indexPlace = num.indexOf('.');
@@ -41,9 +40,6 @@ function clipOff(num:string) {
     setTimeout(function() {
         to2.style.color = 'black';
     }, 2000);
-
-    clickoff = 'true';
-    localStorage.setItem('clipOff2', clickoff);
 };
 
 
@@ -51,14 +47,12 @@ let applycode:any = document.getElementById('applycode');
 let undercut:any = document.getElementById('undercut');
 let totalcut:any = document.getElementById('this');
 let to2:any = document.getElementById('totalcut');
+let clickButton:boolean = false;
 
 function applyBtn() {
     let applycodeVALUE = applycode.value;
     let toValue = totalcut.value
     let valueFloat = parseFloat(toValue)
-
-
-
 
     if (applycodeVALUE == 'JAJ439') {
         undercut.style.color = 'red';
@@ -72,10 +66,21 @@ function applyBtn() {
         let newValue = result.toString()
         clipOff(newValue)
     }
+    clickButton = true
 
 };
 
 
+function processBtn() {
+    if (clickButton == false ) {
+        localStorage.setItem('clipOff2', 'false');
+    } else {
+        localStorage.setItem('clipOff2', 'true');
+    }
+
+    localStorage.setItem('total', totalcut.value)
+
+}
 
 
 

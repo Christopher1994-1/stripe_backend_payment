@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('cart is empty');
     }
 });
-let clickoff = 'false';
 function clipOff(num) {
     let indexPlace = num.indexOf('.');
     let finalTotal = '';
@@ -30,14 +29,13 @@ function clipOff(num) {
     setTimeout(function () {
         to2.style.color = 'black';
     }, 2000);
-    clickoff = 'true';
-    localStorage.setItem('clipOff2', clickoff);
 }
 ;
 let applycode = document.getElementById('applycode');
 let undercut = document.getElementById('undercut');
 let totalcut = document.getElementById('this');
 let to2 = document.getElementById('totalcut');
+let clickButton = false;
 function applyBtn() {
     let applycodeVALUE = applycode.value;
     let toValue = totalcut.value;
@@ -50,5 +48,15 @@ function applyBtn() {
         let newValue = result.toString();
         clipOff(newValue);
     }
+    clickButton = true;
 }
 ;
+function processBtn() {
+    if (clickButton == false) {
+        localStorage.setItem('clipOff2', 'false');
+    }
+    else {
+        localStorage.setItem('clipOff2', 'true');
+    }
+    localStorage.setItem('total', totalcut.value);
+}

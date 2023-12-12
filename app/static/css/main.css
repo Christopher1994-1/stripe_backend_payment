@@ -359,25 +359,42 @@ body {
   font-size: 13px;
 }
 
-.checkout {
+.big {
+  display: flex;
+  border: 2px solid black;
+  justify-content: space-around;
+  width: 95%;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.big .checkout {
   border: 2px dotted black;
   text-align: center;
+  width: 55%;
 }
-.checkout .ballsNlines {
+.big .checkout h1 {
+  margin-bottom: 0px;
+  font-size: 50px;
+}
+.big .checkout p {
+  margin-top: 0px;
+}
+.big .checkout .ballsNlines {
   display: flex;
   align-items: center;
   justify-content: space-around;
   border: 2px dotted black;
-  width: 35%;
+  width: 95%;
   margin: auto;
 }
-.checkout .ballsNlines .checkNball {
+.big .checkout .ballsNlines .checkNball {
   display: flex;
   align-items: center;
   flex-direction: column;
   display: none;
 }
-.checkout .ballsNlines .checkNball .ball1Check {
+.big .checkout .ballsNlines .checkNball .ball1Check {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -388,21 +405,21 @@ body {
   justify-content: center;
   margin-top: 10px;
 }
-.checkout .ballsNlines .checkNball .ball1Check i {
+.big .checkout .ballsNlines .checkNball .ball1Check i {
   margin: 0;
   color: white;
   cursor: default;
 }
-.checkout .ballsNlines .checkNball p {
+.big .checkout .ballsNlines .checkNball p {
   margin: 0;
   cursor: default;
 }
-.checkout .ballsNlines .ballNwrite {
+.big .checkout .ballsNlines .ballNwrite {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.checkout .ballsNlines .ballNwrite .ball {
+.big .checkout .ballsNlines .ballNwrite .ball {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -413,24 +430,188 @@ body {
   justify-content: center;
   margin-top: 10px;
 }
-.checkout .ballsNlines .ballNwrite .ball h5 {
+.big .checkout .ballsNlines .ballNwrite .ball h5 {
   margin: 0;
   cursor: default;
 }
-.checkout .ballsNlines .ballNwrite p {
+.big .checkout .ballsNlines .ballNwrite p {
   margin: 0;
   cursor: default;
 }
-.checkout .ballsNlines .line {
+.big .checkout .ballsNlines .line {
   border: 2px solid black;
   height: 4px;
   border-radius: 10px;
-  width: 100px;
+  width: 200px;
   margin-bottom: 10px;
 }
-.checkout .first_slide {
+.big .checkout .first_slide {
+  text-align: left;
+  width: 95%;
+  margin: auto;
+  margin-top: 2%;
+}
+.big .checkout .first_slide p {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.big .checkout .first_slide .firstNlast {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.big .checkout .first_slide .firstNlast .first {
+  display: flex;
+  flex-direction: column;
+}
+.big .checkout .first_slide .firstNlast .first label {
+  font-weight: bold;
+}
+.big .checkout .first_slide .firstNlast .first label span {
+  font-weight: 200;
+}
+.big .checkout .first_slide .firstNlast .last {
+  display: flex;
+  flex-direction: column;
+}
+.big .checkout .first_slide .firstNlast .last label {
+  font-weight: bold;
+}
+.big .checkout .first_slide .firstNlast .last label span {
+  font-weight: 200;
+}
+.big .checkout .first_slide .street-address {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.big .checkout .first_slide .street-address label {
+  font-weight: bold;
+}
+.big .checkout .first_slide .street-address label span {
+  font-weight: 200;
+}
+.big .checkout .first_slide .labelbox {
+  margin-top: 10px;
+}
+.big .checkout .first_slide .zipCode_city {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  margin-top: 10px;
+}
+.big .checkout .first_slide .zipCode_city .first {
+  display: flex;
+  flex-direction: column;
+}
+.big .checkout .first_slide .zipCode_city .first label {
+  font-weight: bold;
+}
+.big .checkout .first_slide .zipCode_city .first label span {
+  font-weight: 200;
+}
+.big .checkout .first_slide .zipCode_city .last {
+  display: flex;
+  flex-direction: column;
+}
+.big .checkout .first_slide .zipCode_city .last label {
+  font-weight: bold;
+}
+.big .checkout .first_slide .zipCode_city .last label span {
+  font-weight: 200;
+}
+.big .checkout .second_slide {
   display: none;
 }
-.checkout .second_slide {
+.big .subtotal {
+  border: 2px solid black;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+.big .subtotal .order_stuff {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 10px;
+  border: 2px solid grey;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-left: 20px;
+  width: 80%;
+}
+.big .subtotal .order_stuff .both {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.big .subtotal .order_stuff .both .names p {
+  margin-block-end: 0;
+  margin-block-start: 0;
+  cursor: default;
+}
+.big .subtotal .order_stuff .both .princes #dis {
   display: none;
+}
+.big .subtotal .order_stuff .both .princes p {
+  margin-block-end: 0;
+  margin-block-start: 0;
+  font-weight: bold;
+  cursor: default;
+  margin-left: 10px;
+}
+.big .subtotal .order_stuff .line {
+  height: 2px;
+  border: 1px solid grey;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.big .subtotal .order_stuff .ordertotal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 10px;
+}
+.big .subtotal .order_stuff .ordertotal .order {
+  margin: 0;
+  padding: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.big .subtotal .order_stuff .ordertotal .order p {
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+.big .subtotal .order_stuff .ordertotal .price {
+  margin: 0;
+  padding: 0;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.big .subtotal .order_stuff .ordertotal .price p {
+  font-weight: bold;
+  margin-left: 10px;
+  margin-block-end: 0;
+  margin-block-start: 0;
+}
+.big .subtotal .order_stuff #discount {
+  display: none;
+}
+.big .subtotal .buttons {
+  display: flex;
+  justify-content: left;
+  margin-left: 10px;
+}
+.big .subtotal .buttons button {
+  margin-left: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #1c5c9c;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  font-size: 13px;
+  width: 200px;
 }/*# sourceMappingURL=main.css.map */

@@ -249,6 +249,12 @@ document.getElementById('cartbutton')?.addEventListener('click', function (event
     lanm(string_items)
 });
 
+document.getElementById('cartbutton1')?.addEventListener('click', function (event) {
+    let string_items = items.join(':');
+    localStorage.setItem('data', string_items);
+    lanm(string_items)
+});
+
 
 
 

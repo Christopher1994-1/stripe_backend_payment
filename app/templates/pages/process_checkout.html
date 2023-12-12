@@ -8,72 +8,168 @@
 {% load static %}
 
 
-<div class="checkout">
-    <h1>CEJ Kirk</h1>
-    <p><i class="fa-solid fa-lock"></i> Checkout</p>
+<div class="big">
 
-    <div class="ballsNlines">
-
-        <div class="checkNball" id="check1">
-            <div class="ball1Check" id="CHECK1"><i class="fa-solid fa-check"></i></div>
-            <p id="infoCHECK">info</p>
+    <div class="checkout">
+        <h1>CEJ Kirk</h1>
+        <p><i class="fa-solid fa-lock"></i> Checkout</p>
+    
+        <div class="ballsNlines">
+    
+            <div class="checkNball" id="check1">
+                <div class="ball1Check" id="CHECK1"><i class="fa-solid fa-check"></i></div>
+                <p id="infoCHECK">info</p>
+            </div>
+    
+            <div class="ballNwrite" id="ball1">
+                <div class="ball"><h5>1</h5></div>
+                <p>info</p>
+            </div>
+    
+            <div class="line" id="line1"></div>
+    
+            <div class="checkNball" id="check2">
+                <div class="ball1Check" id="CHECK1"><i class="fa-solid fa-check"></i></div>
+                <p id="billCHECK">Billing</p>
+            </div>
+    
+            <div class="ballNwrite" id="ball2">
+                <div class="ball"><h5>2</h5></div>
+                <p>Billing</p>
+            </div>
+    
+            <div class="line" id="line2"></div>
+    
+            <div class="checkNball" id="check3">
+                <div class="ball1Check" id="CHECK1"><i class="fa-solid fa-check"></i></div>
+                <p id="rere">Review</p>
+            </div>
+    
+            <div class="ballNwrite" id="ball3">
+                <div class="ball"><h5>3</h5></div>
+                <p>Review</p>
+            </div>
         </div>
+    
+    
+        <div class="first_slide" id="first_slideID">
+            <p>Ship To</p>
 
-        <div class="ballNwrite" id="ball1">
-            <div class="ball"><h5>1</h5></div>
-            <p>info</p>
+            <div class="firstNlast">
+
+                <div class="first">
+                    <label for="firstName">First Name <span>required</span></label>
+                    <input type="text" name="firstName" id="firstNameID">
+                </div>
+
+                <div class="last">
+                    <label for="lastName">Last Name <span>required</span></label>
+                    <input type="text" name="lastName" id="lastNameID">
+                </div>
+
+            </div>
+
+            <div class="street-address">
+                <label for="street">Street Address: <span>required</span></label>
+                <input type="text" name="street" id="streetID">
+            </div>
+
+            <div class="zipCode_city">
+
+                <div class="first">
+                    <label for="firstName">Zip Code <span>required</span></label>
+                    <input type="text" name="firstName" id="zipcodeID">
+                </div>
+
+                <div class="last">
+                    <label for="lastName">Town/City <span>required</span></label>
+                    <input type="text" name="lastName" id="townID">
+                </div>
+
+            </div>
+
+            <div class="street-address">
+                <label for="country">Country <span>required</span></label>
+                <input type="text" name="country" id="countryID">
+            </div>
+
+            <div class="street-address">
+                <label for="phone">Phone Number <span>required</span></label>
+                <input type="text" name="phone" id="phoneID">
+            </div>
+
+            <div class="labelbox">
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                <label for="vehicle1"> Use as billing address</label><br>
+            </div>
+    
         </div>
-
-        <div class="line" id="line1"></div>
-
-        <div class="checkNball" id="check2">
-            <div class="ball1Check" id="CHECK1"><i class="fa-solid fa-check"></i></div>
-            <p id="billCHECK">Billing</p>
+    
+        <div class="second_slide" id="second_slideID">
+            <!-- Your HTML structure -->
+            <div id="card-element">
+                <!-- Card number container -->
+                <div id="card-number-element"></div>
+                <!-- Expiration date container -->
+                <div id="card-expiry-element"></div>
+                <!-- CVC container -->
+                <div id="card-cvc-element"></div>
+            </div>
         </div>
-
-        <div class="ballNwrite" id="ball2">
-            <div class="ball"><h5>2</h5></div>
-            <p>Billing</p>
-        </div>
-
-        <div class="line" id="line2"></div>
-
-        <div class="checkNball" id="check3">
-            <div class="ball1Check" id="CHECK1"><i class="fa-solid fa-check"></i></div>
-            <p id="rere">Review</p>
-        </div>
-
-        <div class="ballNwrite" id="ball3">
-            <div class="ball"><h5>3</h5></div>
-            <p>Review</p>
-        </div>
+    
+    
     </div>
 
+    <div class="subtotal">
 
+        <div class="order_stuff">
+            <h5>Order Summary</h5>
+            <div class="both">
 
+                <div class="names">
+                    <p>Merchandise:</p>
+                    <p id="discount">Discount:</p>
+                    <p>Shipping & Handling:</p>
+                    <p>Tax:</p>
+                </div>
+    
+                <div class="princes">
+                    <p id="mer"></p>
+                    <p id="dis"></p>
+                    <p id="ship"></p>
+                    <p id="tax"></p>
+                </div>
+    
+            </div>
+    
+            <div class="line"></div>
+    
+            <div class="ordertotal">
+                <div class="order">
+                    <p>Order Total:</p>
+                </div>
+                <div class="price">
+                    <p id="orderTotal"></p>
+                </div>
+            </div>
 
-    <div class="first_slide">
+        </div>
 
-    </div>
-
-    <div class="second_slide">
-        <!-- Your HTML structure -->
-        <div id="card-element">
-            <!-- Card number container -->
-            <div id="card-number-element"></div>
-            <!-- Expiration date container -->
-            <div id="card-expiry-element"></div>
-            <!-- CVC container -->
-            <div id="card-cvc-element"></div>
+        <div class="buttons">
+            <div class="autofill_button">
+                <button onclick="auto_fill()">Auto Fill</button>
+            </div>
+            <div class="nextbutton">
+                <button onclick="nextProcess()">Next</button>
+            </div>
         </div>
     </div>
-
 
 </div>
 
-<div class="nextbutton">
-    <button onclick="nextProcess()">Next</button>
-</div>
+
+
+
 
 <script src="https://js.stripe.com/v3/"></script>
 
