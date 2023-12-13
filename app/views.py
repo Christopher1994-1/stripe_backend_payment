@@ -4,6 +4,17 @@ from django.http import JsonResponse
 import json
 
 # Create your views here.
+# .
+# !
+# =
+# ,
+# *
+# TODO 
+# BUG 
+
+
+
+
 
 dd = []
 subtotal = []

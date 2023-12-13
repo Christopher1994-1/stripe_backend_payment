@@ -48,6 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
+
+
+// = Code for the messages pop up
+
 let messages_msg:any = document.getElementById('messagesID');
 
 function show_message(message:string, seconds:number) {
@@ -66,6 +71,35 @@ function show_message(message:string, seconds:number) {
 
 
 
+
+
+
+// .
+// !
+// =
+// ,
+// *
+// TODO 
+// BUG 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// = ///////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// //////////
+// ! code section to process when user clicks the next button
+
+
+
+// . code for changing between user info input section and payment info input
 
 let productColor:string = '#1c5c9c'
 
@@ -147,6 +181,36 @@ function nextProcess() {
 };
 
 
+// = ///////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// //////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// = ///////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// //////////
+// ! Miscellaneous functions 
+
+
+
+// . function that calculates the tax // 
 function cal_tax(total:number) {
     let washington_tax = 6.5
 
@@ -167,6 +231,7 @@ function cal_tax(total:number) {
 };
 
 
+// . function to calculate the discount
 function cal_discount(total:number) {
     let discount = (15/100) * total;
     let new_total = total - discount;
@@ -187,7 +252,7 @@ function cal_discount(total:number) {
 };
 
 
-
+// . function that updates the prices when page is loaded
 function update_tt_prices(coupon:string, total:string) {
     // HTML Elements
     let merchandise:any = document.getElementById('mer');
@@ -245,8 +310,7 @@ function update_tt_prices(coupon:string, total:string) {
 };
 
 
-
-
+// . function that updates the user info inputs with stuff
 function auto_fill() {
     let firstname_input:any = document.getElementById('firstNameID1');
     let lastname_input:any = document.getElementById('lastNameID2');
@@ -278,15 +342,29 @@ function auto_fill() {
 
 
 
+// = ///////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// //////////
 
 
 
 
 
-// checking each input
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// input status varibles
+
+
+
+
+
+
+
+
+
+
+
+
+// ! checking each input
+// = ///////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// //////////
+
+// . input status varibles
 
 let firstName_pass:boolean = false;
 let lastName_pass:boolean = false;
@@ -298,28 +376,16 @@ let phone_pass:boolean = false;
 
 
 
-
-
 function verify_slide_one() {
     if (firstName_pass == true && lastName_pass == true && street_pass == true && zipper_pass == true && townCity_pass == true && country_pass == true && phone_pass == true ) {
         return true;
     } else {
-        console.log('-----------------------------------')
-        console.log(firstName_pass)
-        console.log(lastName_pass)
-        console.log(street_pass)
-        console.log(zipper_pass)
-        console.log(townCity_pass)
-        console.log(country_pass)
-        console.log(phone_pass)
-        return false;
-        
+        return false; 
     }
-
 };
 
 
-// function to check first name inputs
+//. function to check first name inputs
 function check_first_name() {
     // element itself
     let firstname_input1:any = document.getElementById('firstNameID1');
@@ -347,8 +413,7 @@ function check_first_name() {
 
 };
 
-
-// function to check last name inputs
+//. function to check last name inputs
 function check_last_name() {
     // element itself
     let firstname_input1:any = document.getElementById("lastNameID2");
@@ -377,8 +442,7 @@ function check_last_name() {
 };
 
 
-
-// function to check street inputs
+//. function to check street inputs
 function check_address_name() {
     // element itself
     let firstname_input1:any = document.getElementById("streetID");
@@ -408,8 +472,7 @@ function check_address_name() {
 
 
 
-
-// function to check zip inputs
+//. function to check zip inputs
 function check_zipper_name() {
     // element itself
     let firstname_input1:any = document.getElementById("zipcodeID");
@@ -454,8 +517,7 @@ function check_zipper_name() {
 };
 
 
-
-// function to check town or city inputs
+//. function to check town or city inputs
 function check_townCity() {
     // element itself
     let firstname_input1:any = document.getElementById('townID');
@@ -484,9 +546,7 @@ function check_townCity() {
 };
 
 
-
-
-// function to check country inputs
+//. function to check country inputs
 function check_country() {
     // element itself
     let firstname_input1:any = document.getElementById('countryID');
@@ -515,9 +575,7 @@ function check_country() {
 };
 
 
-
-
-// function to check zip inputs
+//. function to check zip inputs
 function check_phone_number() {
     // element itself
     let firstname_input1:any = document.getElementById("phoneID");
@@ -562,19 +620,32 @@ function check_phone_number() {
 };
 
 
-
+//. function that checks if input is numbers, simpler to Python's .isNumeric()
 function isNumeric(value:string) {
     return /^\d+$/.test(value) || /^-\d+$/.test(value) || /^\d+\.\d+$/.test(value) || /^-\d+\.\d+$/.test(value);
 };
 
 
+// = ///////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// //////////
 
 
 
 
-// checking the inputs for when the next button is clicked
 
 
+
+
+
+
+
+
+
+
+
+
+
+// = ///////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// //////////
+//. checking the inputs for when the next button is clicked
 
 function checking_first_nameNXTBTN() {
     let firstname_input:any = document.getElementById('firstNameID1');
@@ -664,3 +735,35 @@ function checking_phone_nameNXTBTN() {
 
 };
 
+// = ///////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// //////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//= //////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// ///////////
+// ! code section for payment area
+
+
+
+
+
+
+
+
+//= //////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// ///////////
