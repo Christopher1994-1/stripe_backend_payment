@@ -13,6 +13,27 @@ body {
     margin: 0;
 }
 
+.messages1 {
+    position: absolute;
+    top: 10%;
+    left: 50%; /* Adjust left to 50% */
+    transform: translate(-50%, -50%); /* Update transform property */
+    padding: 0px;
+    background-color: $productBlue;
+    border-radius: 10px;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    display: none;
+
+    h5 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bolder;
+        color: white;
+    }
+}
+
+
 
 .navbar {
     display: flex;
@@ -466,13 +487,12 @@ body {
     display: flex;
     border: $borderBlack;
     justify-content: space-around;
-    width: 95%;
+    width: 85%;
     margin: auto;
     margin-top: 2%;
     margin-bottom: 2%;
 
     .checkout {
-        border: $borderBlackDotted;
         text-align: center;
         width: 55%;
 
@@ -488,7 +508,6 @@ body {
             display: flex;
             align-items: center;
             justify-content: space-around;
-            border: $borderBlackDotted;
             width: 95%;
             margin: auto;
     
@@ -574,6 +593,7 @@ body {
             p {
                 color: black;
                 font-family: Arial, Helvetica, sans-serif;
+                font-weight: 700;
             }
     
             .firstNlast {
@@ -592,6 +612,9 @@ body {
                             font-weight:200;
                         }
                     }
+                    input:focus {
+                        outline: none;
+                    }
                 }
                 .last {
                     display: flex;
@@ -603,6 +626,9 @@ body {
                         span {
                             font-weight:200;
                         }
+                    }
+                    input:focus {
+                        outline: none;
                     }
                 }
             }
@@ -618,7 +644,9 @@ body {
                     span {
                         font-weight:200;
                     }
-
+                }
+                input:focus {
+                    outline: none;
                 }
 
             }
@@ -645,6 +673,9 @@ body {
                             font-weight:200;
                         }
                     }
+                    input:focus {
+                        outline: none;
+                    }
                 }
                 .last {
                     display: flex;
@@ -657,6 +688,9 @@ body {
                             font-weight:200;
                         }
                     }
+                    input:focus {
+                        outline: none;
+                    }
                 }
             }
         }
@@ -668,10 +702,10 @@ body {
     }
 
     .subtotal {
-        border: $borderBlack;
         width: 45%;
         display: flex;
         flex-direction: column;
+        background-color: #efefef;
 
         .order_stuff {
             display: grid;
@@ -680,6 +714,7 @@ body {
             border: 2px solid grey;
             height: fit-content;
             margin-left: 20px;
+            background-color: white;
             width: 80%;
     
             .both {
@@ -755,6 +790,44 @@ body {
 
         }
 
+        .info_about_page {
+            margin-left: 20px;
+            max-height: 240px;
+            overflow: auto;
+            width: 80%;
+            padding: 10px;
+            border: 1px solid grey;
+            background-color: white;
+
+            span {
+                font-weight: 500;
+                color: $productBlue;
+            }
+
+
+            .secondSlide {
+                display: none;
+                .picksascene {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    button {
+                        margin-left: 10px;
+                        border: none;
+                        border-radius: 10px;
+                        background-color: $productBlue;
+                        text-decoration: none;
+                        color: white;
+                        padding: 10px;
+                        font-size: 13px;
+                        width: 100px;
+                    }
+                }
+            }
+
+        }
+
         .buttons {
             display: flex;
             justify-content: left;
@@ -776,3 +849,24 @@ body {
 
 }
 
+/* For WebKit browsers like Chrome and Safari */
+.info_about_page::-webkit-scrollbar {
+    width: 12px; /* You can change this to make the scrollbar wider or narrower */
+}
+  
+.info_about_page::-webkit-scrollbar-thumb {
+    background-color: $productBlue; /* This is the color of the thumb (the moving part of the scrollbar) */
+    border-radius: 6px; /* This makes the thumb rounded */
+}
+
+/* For Firefox */
+.info_about_page {
+    scrollbar-width: thin; /* 'thin' or 'auto' depending on your preference */
+    scrollbar-color: $productBlue #f0f0f0; /* The first color is for the thumb, the second one is for the track (the background of the scrollbar) */
+}
+
+/* For Microsoft Edge */
+.info_about_page {
+    scrollbar-color: $productBlue #f0f0f0;
+}
+  

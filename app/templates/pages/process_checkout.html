@@ -10,6 +10,10 @@
 
 <div class="big">
 
+    <div class="messages1" id="messagesID">
+        <h5>ja</h5>
+    </div>
+
     <div class="checkout">
         <h1>CEJ Kirk</h1>
         <p><i class="fa-solid fa-lock"></i> Checkout</p>
@@ -53,49 +57,49 @@
     
     
         <div class="first_slide" id="first_slideID">
-            <p>Ship To</p>
+            <p id="shiptoo">Ship To</p>
 
             <div class="firstNlast">
 
                 <div class="first">
                     <label for="firstName">First Name <span>required</span></label>
-                    <input type="text" name="firstName" id="firstNameID">
+                    <input type="text" name="firstName" id="firstNameID1" oninput="check_first_name()">
                 </div>
 
                 <div class="last">
                     <label for="lastName">Last Name <span>required</span></label>
-                    <input type="text" name="lastName" id="lastNameID">
+                    <input type="text" name="lastName" id="lastNameID2" oninput="check_last_name()">
                 </div>
 
             </div>
 
             <div class="street-address">
                 <label for="street">Street Address: <span>required</span></label>
-                <input type="text" name="street" id="streetID">
+                <input type="text" name="street" id="streetID" oninput="check_address_name()">
             </div>
 
             <div class="zipCode_city">
 
                 <div class="first">
                     <label for="firstName">Zip Code <span>required</span></label>
-                    <input type="text" name="firstName" id="zipcodeID">
+                    <input type="text" name="firstName" id="zipcodeID" oninput="check_zipper_name()">
                 </div>
 
                 <div class="last">
                     <label for="lastName">Town/City <span>required</span></label>
-                    <input type="text" name="lastName" id="townID">
+                    <input type="text" name="lastName" id="townID" oninput="check_townCity()">
                 </div>
 
             </div>
 
             <div class="street-address">
                 <label for="country">Country <span>required</span></label>
-                <input type="text" name="country" id="countryID">
+                <input type="text" name="country" id="countryID" oninput="check_country()">
             </div>
 
             <div class="street-address">
                 <label for="phone">Phone Number <span>required</span></label>
-                <input type="text" name="phone" id="phoneID">
+                <input type="text" name="phone" id="phoneID" oninput="check_phone_number()">
             </div>
 
             <div class="labelbox">
@@ -153,6 +157,40 @@
                 </div>
             </div>
 
+        </div>
+
+
+        <div class="info_about_page">
+            <div class="firstSlide" id="infoSlide1ID">
+                <h5>About Project - <span>Read Me</span></h5>
+                <hr>
+                <p>This area is just a standard info input area where a user would put their info into the inputs. You can enter random stuff or hit the 'Auto Fill' button to automatlly fill the inputs.</p>
+                <p>You can also click the 'Next' button to test the input verification system.</p>
+            </div>
+            <div class="secondSlide" id="infoSlide2ID">
+                <h5>Stripe Payment</h5>
+                <hr>
+                <p>The Stripe payment API provides numerous testing tools for developers to evaluate their integration. Among these tools are a 
+                    set of dummy card numbers specifically designed to test various card scenarios and responses. These scenarios include 
+                    generic declines, insufficient funds, expired card, incorrect CVC decline, and incorrect number decline. You can find 
+                    the full list by clicking <a href="https://stripe.com/docs/testing#declined-payments" target="_blank">here</a>. </p>
+                <hr>
+                <h5>Pick The Scenario</h5>
+                <div class="picksascene">
+                    <div class="selector">
+                        <select name="scenario_selector" id="scenario_selectorID">
+                            <option value="generic-decline">Generic Decline</option>
+                            <option value="insufficient-funds">Insufficient Funds</option>
+                            <option value="expired-card">Expired Card</option>
+                            <option value="incorrect-CVC-decline">Incorrect CVC Decline</option>
+                            <option value="incorrect-number-decline">Incorrect Number Decline</option>
+                        </select>
+                    </div>
+                    <div class="selector_button">
+                        <button>TEST</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="buttons">

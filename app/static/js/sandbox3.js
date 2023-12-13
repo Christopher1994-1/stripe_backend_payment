@@ -27,6 +27,20 @@ document.addEventListener('DOMContentLoaded', function () {
     cardExpiry.mount('#card-expiry-element');
     cardCvc.mount('#card-cvc-element');
 });
+let messages_msg = document.getElementById('messagesID');
+function show_message(message, seconds) {
+    messages_msg.style.display = 'block';
+    messages_msg.innerHTML = `<div style="
+    color: white; 
+    font-size: 18px; 
+    padding: 10px; 
+    font-family:Arial, Helvetica, sans-serif;
+    ">${message}</div>`;
+    setTimeout(function () {
+        messages_msg.style.display = 'none';
+    }, seconds);
+}
+;
 let productColor = '#1c5c9c';
 let checkONE = document.getElementById('check1');
 let oneONE = document.getElementById('ball1');
@@ -43,7 +57,10 @@ let level = '1';
 function nextProcess() {
     let firstlevel = document.getElementById('first_slideID');
     let secondlevel = document.getElementById('second_slideID');
-    if (level == '1') {
+    let firstSlide_info = document.getElementById('infoSlide1ID');
+    let secondlide_info = document.getElementById('infoSlide2ID');
+    let first_slide_verf = verify_slide_one();
+    if (level == '1' && first_slide_verf == true) {
         oneONE.style.display = 'none';
         checkONE.style.display = 'block';
         checkONE.style.display = 'flex';
@@ -53,22 +70,18 @@ function nextProcess() {
         level = '2';
         firstlevel.style.display = 'none';
         secondlevel.style.display = 'block';
-    }
-    else if (level == '2') {
-        twoTWO.style.display = 'none';
-        checkTWO.style.display = 'block';
-        checkTWO.style.display = 'flex';
-        checkTWO.style.flexDirection = 'column';
-        checkBILL.style.color = productColor;
-        line2.style.border = '2px solid ' + productColor;
-        level = '3';
+        firstSlide_info.style.display = 'none';
+        secondlide_info.style.display = 'block';
     }
     else {
-        threeTHREE.style.display = 'none';
-        checkTHREE.style.display = 'block';
-        checkTHREE.style.display = 'flex';
-        checkTHREE.style.flexDirection = 'column';
-        reCHECK.style.color = productColor;
+        checking_first_nameNXTBTN();
+        checking_last_nameNXTBTN();
+        checking_street_nameNXTBTN();
+        checking_zip_nameNXTBTN();
+        checking_country_nameNXTBTN();
+        checking_phone_nameNXTBTN();
+        checking_town_nameNXTBTN();
+        show_message("Error: Incomplete data detected. Please complete all inputs or utilize the 'Auto Fill' option.", 6000);
     }
 }
 ;
@@ -142,8 +155,8 @@ function update_tt_prices(coupon, total) {
 }
 ;
 function auto_fill() {
-    let firstname_input = document.getElementById('firstNameID');
-    let lastname_input = document.getElementById('lastNameID');
+    let firstname_input = document.getElementById('firstNameID1');
+    let lastname_input = document.getElementById('lastNameID2');
     let street_address = document.getElementById('streetID');
     let zipCode_ = document.getElementById('zipcodeID');
     let townCIty = document.getElementById('townID');
@@ -155,5 +168,237 @@ function auto_fill() {
     zipCode_.value = '98650';
     townCIty.value = 'Vancouver';
     countryID.value = 'United States';
-    phone.value = '702-000-000';
+    phone.value = '702000000';
+    firstName_pass = true;
+    lastName_pass = true;
+    street_pass = true;
+    zipper_pass = true;
+    townCity_pass = true;
+    country_pass = true;
+    phone_pass = true;
 }
+;
+let firstName_pass = false;
+let lastName_pass = false;
+let street_pass = false;
+let zipper_pass = false;
+let townCity_pass = false;
+let country_pass = false;
+let phone_pass = false;
+function verify_slide_one() {
+    if (firstName_pass == true && lastName_pass == true && street_pass == true && zipper_pass == true && townCity_pass == true && country_pass == true && phone_pass == true) {
+        return true;
+    }
+    else {
+        console.log('-----------------------------------');
+        console.log(firstName_pass);
+        console.log(lastName_pass);
+        console.log(street_pass);
+        console.log(zipper_pass);
+        console.log(townCity_pass);
+        console.log(country_pass);
+        console.log(phone_pass);
+        return false;
+    }
+}
+;
+function check_first_name() {
+    let firstname_input1 = document.getElementById('firstNameID1');
+    let first_name_value = firstname_input1.value;
+    let first_name_length = first_name_value.length;
+    let redBorder = '2px solid red';
+    let normalBorder = '1px solid #1c5c9c';
+    if (first_name_length > 2) {
+        firstName_pass = true;
+        firstname_input1.style.border = normalBorder;
+    }
+    else if (first_name_length < 2) {
+        firstname_input1.style.border = redBorder;
+        firstName_pass = false;
+    }
+}
+;
+function check_last_name() {
+    let firstname_input1 = document.getElementById("lastNameID2");
+    let first_name_value = firstname_input1.value;
+    let first_name_length = first_name_value.length;
+    let redBorder = '2px solid red';
+    let normalBorder = '1px solid #1c5c9c';
+    if (first_name_length > 2) {
+        lastName_pass = true;
+        firstname_input1.style.border = normalBorder;
+    }
+    else if (first_name_length < 2) {
+        firstname_input1.style.border = redBorder;
+        lastName_pass = false;
+    }
+}
+;
+function check_address_name() {
+    let firstname_input1 = document.getElementById("streetID");
+    let first_name_value = firstname_input1.value;
+    let first_name_length = first_name_value.length;
+    let redBorder = '2px solid red';
+    let normalBorder = '1px solid #1c5c9c';
+    if (first_name_length > 6) {
+        street_pass = true;
+        firstname_input1.style.border = normalBorder;
+    }
+    else if (first_name_length < 6) {
+        firstname_input1.style.border = redBorder;
+        street_pass = false;
+    }
+}
+;
+function check_zipper_name() {
+    let firstname_input1 = document.getElementById("zipcodeID");
+    let first_name_value = firstname_input1.value;
+    let first_name_length = first_name_value.length;
+    let zipperBOOL = isNumeric(first_name_value);
+    let redBorder = '2px solid red';
+    let normalBorder = '1px solid #1c5c9c';
+    if (zipperBOOL == false && first_name_length == 0) {
+        firstname_input1.value = '';
+        firstname_input1.style.border = redBorder;
+        show_message('Error: Please enter only numerical values', 4000);
+    }
+    else if (first_name_length > 0 && !zipperBOOL) {
+        let non_num_value = first_name_length - 1;
+        let new_value = first_name_value.slice(0, non_num_value);
+        firstname_input1.value = new_value;
+        firstname_input1.style.border = redBorder;
+        show_message('Error: Please enter only numerical values', 4000);
+    }
+    else if (first_name_length == 5 && zipperBOOL) {
+        firstname_input1.style.border = normalBorder;
+        zipper_pass = true;
+    }
+    else if (first_name_length > 5) {
+        let non_num_value = first_name_length - 1;
+        let new_value = first_name_value.slice(0, non_num_value);
+        firstname_input1.value = new_value;
+    }
+}
+;
+function check_townCity() {
+    let firstname_input1 = document.getElementById('townID');
+    let first_name_value = firstname_input1.value;
+    let first_name_length = first_name_value.length;
+    let redBorder = '2px solid red';
+    let normalBorder = '1px solid #1c5c9c';
+    if (first_name_length > 2) {
+        townCity_pass = true;
+        firstname_input1.style.border = normalBorder;
+    }
+    else if (first_name_length < 2) {
+        firstname_input1.style.border = redBorder;
+        townCity_pass = false;
+    }
+}
+;
+function check_country() {
+    let firstname_input1 = document.getElementById('countryID');
+    let first_name_value = firstname_input1.value;
+    let first_name_length = first_name_value.length;
+    let redBorder = '2px solid red';
+    let normalBorder = '1px solid #1c5c9c';
+    if (first_name_length > 2) {
+        country_pass = true;
+        firstname_input1.style.border = normalBorder;
+    }
+    else if (first_name_length < 2) {
+        firstname_input1.style.border = redBorder;
+        country_pass = false;
+    }
+}
+;
+function check_phone_number() {
+    let firstname_input1 = document.getElementById("phoneID");
+    let first_name_value = firstname_input1.value;
+    let first_name_length = first_name_value.length;
+    let zipperBOOL = isNumeric(first_name_value);
+    let redBorder = '2px solid red';
+    let normalBorder = '1px solid #1c5c9c';
+    if (zipperBOOL == false && first_name_length == 0) {
+        firstname_input1.value = '';
+        firstname_input1.style.border = redBorder;
+        show_message('Error: Please enter only numerical values', 4000);
+    }
+    else if (first_name_length > 0 && !zipperBOOL) {
+        let non_num_value = first_name_length - 1;
+        let new_value = first_name_value.slice(0, non_num_value);
+        firstname_input1.value = new_value;
+        firstname_input1.style.border = redBorder;
+        show_message('Error: Please enter only numerical values', 4000);
+    }
+    else if (first_name_length == 10 && zipperBOOL) {
+        firstname_input1.style.border = normalBorder;
+        phone_pass = true;
+    }
+    else if (first_name_length > 10) {
+        let non_num_value = first_name_length - 1;
+        let new_value = first_name_value.slice(0, non_num_value);
+        firstname_input1.value = new_value;
+    }
+}
+;
+function isNumeric(value) {
+    return /^\d+$/.test(value) || /^-\d+$/.test(value) || /^\d+\.\d+$/.test(value) || /^-\d+\.\d+$/.test(value);
+}
+;
+function checking_first_nameNXTBTN() {
+    let firstname_input = document.getElementById('firstNameID1');
+    let redBorder = '2px solid red';
+    if (firstname_input.value == '') {
+        firstname_input.style.border = redBorder;
+    }
+}
+;
+function checking_last_nameNXTBTN() {
+    let firstname_input = document.getElementById('lastNameID2');
+    let redBorder = '2px solid red';
+    if (firstname_input.value == '') {
+        firstname_input.style.border = redBorder;
+    }
+}
+;
+function checking_street_nameNXTBTN() {
+    let firstname_input = document.getElementById('streetID');
+    let redBorder = '2px solid red';
+    if (firstname_input.value == '') {
+        firstname_input.style.border = redBorder;
+    }
+}
+;
+function checking_zip_nameNXTBTN() {
+    let firstname_input = document.getElementById('zipcodeID');
+    let redBorder = '2px solid red';
+    if (firstname_input.value == '') {
+        firstname_input.style.border = redBorder;
+    }
+}
+;
+function checking_town_nameNXTBTN() {
+    let firstname_input = document.getElementById('townID');
+    let redBorder = '2px solid red';
+    if (firstname_input.value == '') {
+        firstname_input.style.border = redBorder;
+    }
+}
+;
+function checking_country_nameNXTBTN() {
+    let firstname_input = document.getElementById('countryID');
+    let redBorder = '2px solid red';
+    if (firstname_input.value == '') {
+        firstname_input.style.border = redBorder;
+    }
+}
+;
+function checking_phone_nameNXTBTN() {
+    let firstname_input = document.getElementById('phoneID');
+    let redBorder = '2px solid red';
+    if (firstname_input.value == '') {
+        firstname_input.style.border = redBorder;
+    }
+}
+;
