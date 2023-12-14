@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+
     let retrievedValue:any = localStorage.getItem('clipOff2');
     let total:any = localStorage.getItem('total');
 
@@ -22,30 +23,36 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     update_tt_prices(retrievedValue, total)
-
-    let thing:boolean = false;
-
-    var stripe:any = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
-
-    // Create an instance of Elements
-    var elements = stripe.elements();
-
-    // Create an instance of the card number Element.
-    var cardNumber = elements.create('cardNumber');
-
-    // Create an instance of the expiration date Element.
-    var cardExpiry = elements.create('cardExpiry');
-
-    // Create an instance of the CVC Element.
-    var cardCvc = elements.create('cardCvc');
-
-    // Add the card elements into their respective containers
-    cardNumber.mount('#card-number-element');
-    cardExpiry.mount('#card-expiry-element');
-    cardCvc.mount('#card-cvc-element');
-
-
+      
 });
+
+
+
+//= Stripe stuff
+
+let thing:boolean = false;
+
+var stripe:any = Stripe('pk_test_51OF1EMH12wPbXhJ68EXbZb8FX8jjVv5JyuHndUyjiBj8bSnpWd5LvrfYy1WLLCuQkKkjDBGx3ZVPXcrZYVgznJ66002dk659Z8');
+
+// Create an instance of Elements
+var elements = stripe.elements();
+
+// Create an instance of the card number Element.
+var cardNumber = elements.create('cardNumber');
+cardNumber.update({placeholder: 'Vaild Card Number'});
+
+
+
+// Create an instance of the expiration date Element.
+var cardExpiry = elements.create('cardExpiry');
+
+// Create an instance of the CVC Element.
+var cardCvc = elements.create('cardCvc');
+
+// Add the card elements into their respective containers
+cardNumber.mount('#card-number-element');
+cardExpiry.mount('#card-expiry-element');
+cardCvc.mount('#card-cvc-element');
 
 
 
@@ -71,6 +78,17 @@ function show_message(message:string, seconds:number) {
 
 
 
+
+
+
+
+// Helper for displaying status messages.
+const addMessage = (message:string) => {
+    const messagesDiv:any = document.querySelector('#messages');
+    messagesDiv.style.display = 'block';
+    console.log(`Debug: ${message}`);
+  };
+  
 
 
 
@@ -760,10 +778,179 @@ function checking_phone_nameNXTBTN() {
 // ! code section for payment area
 
 
+//* dict for user options and card numbers
+// Example usage
+
+type BasicDictionary = {
+    [key: string]: any;
+  };
+
+
+const myDictionary: BasicDictionary = {
+    Generic_Decline: '4000000000000002',
+    Insufficient_Funds: '4000000000009995',
+    Expired_Card: '4000000000000069',
+    Incorrect_CVC: '4000000000000127',
+    Incorrect_Number: '4242424242424241',
+    Normal_Scenario: '4242424242424242'
+  };
+
+
+//. var for the form id
+const cardformID:any = document.getElementById('card-formID');
+
+
+//. event function for when form is submitted
+cardformID.addEventListener('submit', function (event:any) {
+    event.preventDefault();
+    console.log('checks')
+
+    //* element to get the selected option
+    let selected:any = document.getElementById('scenario_selectorID');
+    let selectedValue = selected.value;
+
+    if (selectedValue == 'Pick_Scenario') {
+        show_message('Must choose a valid card option', 4000)
+    } 
+    
+    else {
+        stripe.createToken(cardNumber).then(function (result:any) {
+            if (result.error) {
+                var errorElement:any = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+                show_message(errorElement, 5000)
+                console.log(result.token.id)
+
+            } 
+            else {
+                sendStripeclient()
+            }
+        });
+    }
+});
 
 
 
 
 
+
+//. function that is called when user changes card scenario type
+function update_card_details() {
+    //* element for the main box
+    let infoBox:any = document.getElementById('inBox');
+
+    //* element to call when placing the card num in
+    let innerID:any = document.getElementById('user_option_choice');
+
+    //* card element to put user choice card into
+    let user_cardHolder:any = document.getElementById('card_numbersss');
+
+    //* element to get the selected option
+    let selected:any = document.getElementById('scenario_selectorID');
+    let selectedValue = selected.value;
+    let selectedValue_split = selectedValue.toString().split('_').join(' ');
+
+
+
+
+    //* getting the card number based on user option
+    let card_choice = myDictionary[selectedValue];
+
+
+        
+    //* conditional checking if user has selected proper choice
+    if (selectedValue == 'Pick_Scenario') {
+        show_message('Must choose a valid card option', 4000);
+        infoBox.style.display = 'none';
+    } else {
+        infoBox.style.display = 'block';
+        innerID.innerHTML = selectedValue_split;
+        user_cardHolder.innerHTML = card_choice;
+    }
+
+};
+
+
+
+//. function that is called when user clicks the copy button
+function copy_number() {
+    //* element for the check icon 
+    let check_icon:any = document.getElementById('number_copied');
+
+    //* element for the copy icon
+    let copy_icon:any = document.getElementById('non_copy');
+
+    //* element to get the selected option
+    let selected:any = document.getElementById('scenario_selectorID');
+    let selectedValue = selected.value;
+
+    let joined:any = myDictionary[selectedValue].toString();
+
+    copyToClipboard(joined)
+
+    copy_icon.style.display = 'none';
+    check_icon.style.display = 'block';
+
+
+
+
+    setTimeout(function() {
+        let infoboxend:any = document.getElementById('inBox');
+        infoboxend.style.display = 'none';
+    }, 6000);
+    
+
+};
+
+
+
+
+//* Function to copy a value to the clipboard
+function copyToClipboard(text:string) {
+    // Try to use the Clipboard API
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+        })
+        .catch((err) => {
+        });
+    } else {
+      // Fallback for browsers that do not support the Clipboard API
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    }
+};
+
+
+
+
+// TODO make pass in the client secret in the thing below
+
+//* function used to make AJAX request to server side to comfirm payment
+function sendStripeclient() {
+
+    stripe.confirmCardPayment('{{ client_secret }}', {
+        payment_method: {
+          card: cardNumber,
+          // Add other payment method details as needed
+        }
+      }).then(function(result:any) {
+        if (result.error) {
+          // Show error to your customer
+          console.log(result.error.message);
+        } else {
+          // The payment succeeded!
+          if (result.paymentIntent.status === 'succeeded') {
+            // Handle a successful payment here
+            console.log("Payment succeeded!");
+          }
+        }
+      });
+
+}
 
 //= //////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// ///////////

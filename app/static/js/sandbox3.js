@@ -17,16 +17,17 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('cart is empty');
     }
     update_tt_prices(retrievedValue, total);
-    let thing = false;
-    var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
-    var elements = stripe.elements();
-    var cardNumber = elements.create('cardNumber');
-    var cardExpiry = elements.create('cardExpiry');
-    var cardCvc = elements.create('cardCvc');
-    cardNumber.mount('#card-number-element');
-    cardExpiry.mount('#card-expiry-element');
-    cardCvc.mount('#card-cvc-element');
 });
+let thing = false;
+var stripe = Stripe('pk_test_51OF1EMH12wPbXhJ68EXbZb8FX8jjVv5JyuHndUyjiBj8bSnpWd5LvrfYy1WLLCuQkKkjDBGx3ZVPXcrZYVgznJ66002dk659Z8');
+var elements = stripe.elements();
+var cardNumber = elements.create('cardNumber');
+cardNumber.update({ placeholder: 'Vaild Card Number' });
+var cardExpiry = elements.create('cardExpiry');
+var cardCvc = elements.create('cardCvc');
+cardNumber.mount('#card-number-element');
+cardExpiry.mount('#card-expiry-element');
+cardCvc.mount('#card-cvc-element');
 let messages_msg = document.getElementById('messagesID');
 function show_message(message, seconds) {
     messages_msg.style.display = 'block';
@@ -41,6 +42,11 @@ function show_message(message, seconds) {
     }, seconds);
 }
 ;
+const addMessage = (message) => {
+    const messagesDiv = document.querySelector('#messages');
+    messagesDiv.style.display = 'block';
+    console.log(`Debug: ${message}`);
+};
 let productColor = '#1c5c9c';
 let checkONE = document.getElementById('check1');
 let oneONE = document.getElementById('ball1');
@@ -190,14 +196,6 @@ function verify_slide_one() {
         return true;
     }
     else {
-        console.log('-----------------------------------');
-        console.log(firstName_pass);
-        console.log(lastName_pass);
-        console.log(street_pass);
-        console.log(zipper_pass);
-        console.log(townCity_pass);
-        console.log(country_pass);
-        console.log(phone_pass);
         return false;
     }
 }
@@ -402,3 +400,102 @@ function checking_phone_nameNXTBTN() {
     }
 }
 ;
+const myDictionary = {
+    Generic_Decline: '4000000000000002',
+    Insufficient_Funds: '4000000000009995',
+    Expired_Card: '4000000000000069',
+    Incorrect_CVC: '4000000000000127',
+    Incorrect_Number: '4242424242424241',
+    Normal_Scenario: '4242424242424242'
+};
+const cardformID = document.getElementById('card-formID');
+cardformID.addEventListener('submit', function (event) {
+    event.preventDefault();
+    console.log('checks');
+    let selected = document.getElementById('scenario_selectorID');
+    let selectedValue = selected.value;
+    if (selectedValue == 'Pick_Scenario') {
+        show_message('Must choose a valid card option', 4000);
+    }
+    else {
+        stripe.createToken(cardNumber).then(function (result) {
+            if (result.error) {
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+                show_message(errorElement, 5000);
+                console.log(result.token.id);
+            }
+            else {
+                sendStripeclient();
+            }
+        });
+    }
+});
+function update_card_details() {
+    let infoBox = document.getElementById('inBox');
+    let innerID = document.getElementById('user_option_choice');
+    let user_cardHolder = document.getElementById('card_numbersss');
+    let selected = document.getElementById('scenario_selectorID');
+    let selectedValue = selected.value;
+    let selectedValue_split = selectedValue.toString().split('_').join(' ');
+    let card_choice = myDictionary[selectedValue];
+    if (selectedValue == 'Pick_Scenario') {
+        show_message('Must choose a valid card option', 4000);
+        infoBox.style.display = 'none';
+    }
+    else {
+        infoBox.style.display = 'block';
+        innerID.innerHTML = selectedValue_split;
+        user_cardHolder.innerHTML = card_choice;
+    }
+}
+;
+function copy_number() {
+    let check_icon = document.getElementById('number_copied');
+    let copy_icon = document.getElementById('non_copy');
+    let selected = document.getElementById('scenario_selectorID');
+    let selectedValue = selected.value;
+    let joined = myDictionary[selectedValue].toString();
+    copyToClipboard(joined);
+    copy_icon.style.display = 'none';
+    check_icon.style.display = 'block';
+    setTimeout(function () {
+        let infoboxend = document.getElementById('inBox');
+        infoboxend.style.display = 'none';
+    }, 6000);
+}
+;
+function copyToClipboard(text) {
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(text)
+            .then(() => {
+        })
+            .catch((err) => {
+        });
+    }
+    else {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+    }
+}
+;
+function sendStripeclient() {
+    stripe.confirmCardPayment('{{ client_secret }}', {
+        payment_method: {
+            card: cardNumber,
+        }
+    }).then(function (result) {
+        if (result.error) {
+            console.log(result.error.message);
+        }
+        else {
+            if (result.paymentIntent.status === 'succeeded') {
+                console.log("Payment succeeded!");
+            }
+        }
+    });
+}

@@ -9,6 +9,8 @@
 
 
 <div class="big">
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
 
     <div class="messages1" id="messagesID">
         <h5>ja</h5>
@@ -108,16 +110,47 @@
             </div>
     
         </div>
+
     
         <div class="second_slide" id="second_slideID">
             <!-- Your HTML structure -->
+
             <div id="card-element">
-                <!-- Card number container -->
-                <div id="card-number-element"></div>
-                <!-- Expiration date container -->
-                <div id="card-expiry-element"></div>
-                <!-- CVC container -->
-                <div id="card-cvc-element"></div>
+                <form action="{% url 'process_payment' %}" method="post" id="card-formID">
+                    {% csrf_token %}
+                    <p id="shiptoo">Payment Details</p>
+
+                    <div class="cardnumber">
+                        <label for="card-number-element">Card Number: <span>required</span></label>
+                        <div id="card-number-element"></div>
+
+                    </div>
+
+                    <div class="ex_cvc">
+                        <div class="ex">
+                            <label for="card-expiry-element">Expiration Date <span>required</span></label>
+                            <div id="card-expiry-element"></div>
+                        </div>
+
+                        <div class="cvc">
+                            <label for="card-cvc-element">CVC <span>required</span></label>
+                            <div id="card-cvc-element"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="card_number_name">
+                        <label for="number_name">Card Owner: <span>required</span></label>
+                        <input type="text" name="number_name" id="number_name" placeholder="Card Owner Name">
+                    </div>
+                
+            </div>
+
+
+        
+
+            <div class="carderror">
+                <div id="card-errors" role="alert"></div>
             </div>
         </div>
     
@@ -159,8 +192,22 @@
 
         </div>
 
+        <div class="invisible_info_div" id="inBox">
+            <h5>For <span id="user_option_choice"></span></h5>
+
+            <p>Card Number:</p>
+            <div class="cardnum">
+                <p id="card_numbersss" class="kis"></p>
+                <i class="fa-solid fa-copy" id="non_copy" onclick="copy_number()"></i>
+                <i class="fa-solid fa-check" id="number_copied"></i>
+            </div>
+
+            <p>You can put any ex date and CVC you want</p>
+
+        </div>
 
         <div class="info_about_page">
+
             <div class="firstSlide" id="infoSlide1ID">
                 <h5>About Project - <span>Read Me</span></h5>
                 <hr>
@@ -178,16 +225,19 @@
                 <h5>Pick The Scenario</h5>
                 <div class="picksascene">
                     <div class="selector">
-                        <select name="scenario_selector" id="scenario_selectorID">
-                            <option value="generic-decline">Generic Decline</option>
-                            <option value="insufficient-funds">Insufficient Funds</option>
-                            <option value="expired-card">Expired Card</option>
-                            <option value="incorrect-CVC-decline">Incorrect CVC Decline</option>
-                            <option value="incorrect-number-decline">Incorrect Number Decline</option>
+                        <select name="scenario_selector" id="scenario_selectorID" onchange="update_card_details()">
+                            <option value="Pick_Scenario">Pick Scenario</option>
+                            <option value="Generic_Decline">Generic Decline</option>
+                            <option value="Insufficient_Funds">Insufficient Funds</option>
+                            <option value="Expired_Card">Expired Card</option>
+                            <option value="Incorrect_CVC">Incorrect CVC Decline</option>
+                            <option value="Incorrect_Number">Incorrect Number Decline</option>
+                            <option value="Normal_Scenario">Normal Scenario</option>
                         </select>
                     </div>
                     <div class="selector_button">
-                        <button>TEST</button>
+                        <button type="submit">TEST</button>
+                    </form>
                     </div>
                 </div>
             </div>

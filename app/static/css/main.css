@@ -467,6 +467,7 @@ body {
   width: 95%;
   margin: auto;
   margin-top: 2%;
+  display: none;
 }
 .big .checkout .first_slide p {
   color: black;
@@ -556,7 +557,62 @@ body {
   outline: none;
 }
 .big .checkout .second_slide {
-  display: none;
+  width: 85%;
+  margin: auto;
+  margin-top: 2%;
+}
+.big .checkout .second_slide p {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-align: left;
+  width: 95%;
+  margin: auto;
+}
+.big .checkout .second_slide label {
+  font-weight: bold;
+}
+.big .checkout .second_slide label span {
+  font-weight: 200;
+}
+.big .checkout .second_slide .cardnumber {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+  margin-top: 2%;
+  text-align: left;
+}
+.big .checkout .second_slide .cardnumber #card-number-element {
+  border: 1px solid rgb(153, 153, 153);
+  padding: 5px;
+}
+.big .checkout .second_slide .ex_cvc {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: auto;
+  margin-top: 2%;
+  text-align: left;
+}
+.big .checkout .second_slide .ex_cvc #card-expiry-element {
+  border: 1px solid rgb(153, 153, 153);
+  padding: 5px;
+}
+.big .checkout .second_slide .ex_cvc #card-cvc-element {
+  border: 1px solid rgb(153, 153, 153);
+  padding: 5px;
+}
+.big .checkout .second_slide .card_number_name {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+  margin-top: 2%;
+  text-align: left;
+}
+.big .checkout .second_slide .carderror {
+  border: 1px solid red;
 }
 .big .subtotal {
   width: 45%;
@@ -574,6 +630,7 @@ body {
   margin-left: 20px;
   background-color: white;
   width: 80%;
+  position: relative;
 }
 .big .subtotal .order_stuff .both {
   display: grid;
@@ -633,6 +690,35 @@ body {
 .big .subtotal .order_stuff #discount {
   display: none;
 }
+.big .subtotal .invisible_info_div {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.915);
+  padding: 10px;
+  display: none;
+}
+.big .subtotal .invisible_info_div h5 {
+  color: white;
+}
+.big .subtotal .invisible_info_div p {
+  color: white;
+}
+.big .subtotal .invisible_info_div #user_option_choice {
+  color: #73b1ef;
+}
+.big .subtotal .invisible_info_div .cardnum {
+  display: flex;
+}
+.big .subtotal .invisible_info_div .cardnum .kis {
+  color: white;
+}
+.big .subtotal .invisible_info_div .cardnum i {
+  color: white;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.big .subtotal .invisible_info_div .cardnum #number_copied {
+  display: none;
+}
 .big .subtotal .info_about_page {
   margin-left: 20px;
   max-height: 240px;
@@ -641,12 +727,14 @@ body {
   padding: 10px;
   border: 1px solid grey;
   background-color: white;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 .big .subtotal .info_about_page span {
   font-weight: 500;
   color: #1c5c9c;
 }
-.big .subtotal .info_about_page .secondSlide {
+.big .subtotal .info_about_page .firstSlide {
   display: none;
 }
 .big .subtotal .info_about_page .secondSlide .picksascene {

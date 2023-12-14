@@ -589,6 +589,7 @@ body {
             width: 95%;
             margin: auto;
             margin-top: 2%;
+            display: none;
 
             p {
                 color: black;
@@ -697,7 +698,80 @@ body {
     
     
         .second_slide {
-            display: none;
+            width: 85%;
+            margin: auto;
+            margin-top: 2%;
+
+            p {
+                color: black;
+                font-family: Arial, Helvetica, sans-serif;
+                font-weight: 700;
+                text-align: left;
+                width: 95%;
+                margin: auto;
+            }
+
+            label {
+                font-weight: bold;
+
+                span {
+                    font-weight:200;
+                }
+            }
+
+            .cardnumber {
+                display: flex;
+                flex-direction: column;
+                width: 95%;
+                margin: auto;
+                margin-top: 2%;
+                text-align: left;
+
+            
+
+                #card-number-element {
+                    border: 1px solid rgb(153, 153, 153);
+                    padding: 5px;
+                }
+
+            }
+
+
+            .ex_cvc {
+                display: flex;
+                justify-content: space-between;
+                width: 95%;
+                margin: auto;
+                margin-top: 2%;
+                text-align: left;
+
+                #card-expiry-element {
+                    border: 1px solid rgb(153, 153, 153);
+                    padding: 5px;
+                }
+
+
+                #card-cvc-element {
+                    border: 1px solid rgb(153, 153, 153);
+                    padding: 5px;
+                }
+
+            }
+
+            .card_number_name {
+                display: flex;
+                flex-direction: column;
+                width: 95%;
+                margin: auto;
+                margin-top: 2%;
+                text-align: left;
+            }
+
+            .carderror {
+                border: 1px solid red;
+            }
+
+
         }
     }
 
@@ -716,6 +790,7 @@ body {
             margin-left: 20px;
             background-color: white;
             width: 80%;
+            position: relative;
     
             .both {
                 display: grid;
@@ -790,6 +865,46 @@ body {
 
         }
 
+        .invisible_info_div {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.915);
+            padding: 10px;
+            display: none;
+
+
+            h5 {
+                color: white;
+            }
+
+            p {
+                color: white;
+
+            }
+
+            #user_option_choice {
+                color: #73b1ef;
+            }
+
+
+            .cardnum {
+                display: flex;
+                
+                .kis {
+                    color: white;
+                }
+
+                i {
+                    color: white;
+                    cursor: pointer;
+                    margin-left: 5px;
+                }
+
+                #number_copied {
+                    display: none;
+                }
+            }
+        }
+
         .info_about_page {
             margin-left: 20px;
             max-height: 240px;
@@ -798,6 +913,8 @@ body {
             padding: 10px;
             border: 1px solid grey;
             background-color: white;
+            margin-top: 2%;
+            margin-bottom: 2%;
 
             span {
                 font-weight: 500;
@@ -805,8 +922,11 @@ body {
             }
 
 
-            .secondSlide {
+            .firstSlide {
                 display: none;
+            }
+            .secondSlide {
+
                 .picksascene {
                     display: flex;
                     justify-content: space-between;
@@ -848,6 +968,10 @@ body {
     }
 
 }
+
+
+// ! DONT FORGET TO CHANGE .FIRSTSLIDE BACK TO NORMAL
+
 
 /* For WebKit browsers like Chrome and Safari */
 .info_about_page::-webkit-scrollbar {
