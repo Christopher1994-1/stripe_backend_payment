@@ -1,12 +1,10 @@
 from django.shortcuts import render
 from . import products
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
-from django.http import HttpResponse
 import stripe
 import json
 import os
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
@@ -40,7 +38,11 @@ def index(request):
 
 #. function for cart
 def cart(request):
-    return render(request, 'pages/cart.html', {'data':dd, 'total':subtotal[0]})
+    if dd:
+        return render(request, 'pages/cart.html', {'data':dd, 'total':subtotal[0], "empty":"n"})
+    else:
+        return render(request, 'pages/cart.html', {"empty":'empty'})
+    
 
 
 
@@ -61,6 +63,7 @@ def update_card(request):
 
 
 #! watch the video from yesterday and intergate it
+#! also create product db, dont send any numbers by the front end
 
 
 def process_payment(request):
@@ -68,21 +71,69 @@ def process_payment(request):
 
     # Assuming you have a user_token that you want to set as a cookie
     user_token = "abc123"
-    
-    stripe.api_key = STRIPE_SECRET_KEY
-
-    intent = stripe.PaymentIntent.create(
-        amount=100,
-        currency="usd",
-        payment_method="pm_card_visa",
-    )
 
 
     # Create a response object
-    response = render(request, 'pages/process_checkout.html', {"data": dd, 'total': subtotal, 'secret':intent.client_secret})
+    response = render(request, 'pages/process_checkout.html', {"data": dd, 'total': subtotal,})
 
     # Set a cookie named 'user_token' with SameSite=None and Secure (for HTTPS)
     response.set_cookie('user_token', user_token, samesite='None', secure=True)
 
     return response
 
+
+
+
+
+
+
+
+stripe.api_key = STRIPE_SECRET_KEY
+
+
+def calculate_order_amount():
+    pass
+
+
+
+def stripeIntentView(request):
+    intent = stripe.PaymentIntent.create(
+        amount=100,
+        currency='usd',
+        # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
+        automatic_payment_methods={
+            'enabled': True,
+        },
+        metadata={
+            'tax_calculation': ''
+        },
+        )
+    return JsonResponse({
+            'clientSecret': intent['client_secret']
+        })
+
+
+
+
+
+
+#. function for successful payment
+def successful_pay(request):
+    return render(request, "pages/successful.html", {})
+
+
+
+
+
+
+
+#. view function for about project page
+def about_project(request):
+    return render(request, "pages/about_project.html", {})
+
+
+
+
+#. view function for about project page
+def how_it_works(request):
+    return render(request, "pages/how_it_works.html", {})

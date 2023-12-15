@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+{% load static %}
+
+
+<div class="how_it_works">
+    <h1>How It Works. Simplifed!</h1>
+    <p>
+        This project uses the stripe backend API call to handle payment processing. 
+        It does this by integrating the Stripe API in the Python backend and transferring 
+        sensitive payment information such as a 'client secret token' which is used to 
+        authorize and authenticate the payment elements and confirm transactions through 
+        Stripe.
+    </p>
+
+    <h5>Steps in developing this project</h5>
+
+    <div class="section">
+        <section id="step1">
+            <h2>Step 1: Create Django View</h2>
+            <p>Backend view function that renders the page before the checkout page</p>
+            <!-- Include code snippets or explanations as needed -->
+        </section>
+    
+        <section id="step2">
+            <h2>Step 2: Client-side Fetch Request</h2>
+            <p>Use client-side code to send a fetch request to the backend, requesting a payment intent and a client secret.</p>
+            <!-- Include code snippets or explanations as needed -->
+        </section>
+    
+        <section id="step3">
+            <h2>Step 3: Create Django View for Payment Intent</h2>
+            <p>Another backend view function that generates a payment intent and sends the data back to the client-side for checkout.</p>
+            <!-- Include code snippets or explanations as needed -->
+        </section>
+    
+        <section id="step4">
+            <h2>Step 4: Use Client Secret for Stripe Elements</h2>
+            <p>Utilize the client secret obtained from Stripe API to securely instantiate elements for handling sensitive user data.</p>
+            <!-- Include code snippets or explanations as needed -->
+        </section>
+    
+        <section id="step5">
+            <h2>Step 5: Verify Payment Details with Stripe API</h2>
+            <p>After users enter their payment details, the Stripe API verifies the provided information.</p>
+            <!-- Include code snippets or explanations as needed -->
+        </section>
+    </div>
+</div>
+
+{% endblock content %}

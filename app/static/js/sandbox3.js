@@ -1,5 +1,126 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+let returnURL = 'http://127.0.0.1:8000/successful_pay';
 document.addEventListener('DOMContentLoaded', function () {
+    var stripe = Stripe('pk_test_51OF1EMH12wPbXhJ68EXbZb8FX8jjVv5JyuHndUyjiBj8bSnpWd5LvrfYy1WLLCuQkKkjDBGx3ZVPXcrZYVgznJ66002dk659Z8');
+    var elements = stripe.elements();
+    var cardNumber = elements.create('cardNumber');
+    cardNumber.update({ placeholder: 'Vaild Card Number' });
+    var cardExpiry = elements.create('cardExpiry');
+    var cardCvc = elements.create('cardCvc');
+    cardNumber.mount('#card-number-element');
+    cardExpiry.mount('#card-expiry-element');
+    cardCvc.mount('#card-cvc-element');
+    let items = '';
+    initialize();
+    checkStatus();
+    function initialize() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
+            const csrfValue = csrfToken.value;
+            const response = yield fetch("/stripeIntentView", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    'X-CSRFToken': csrfValue
+                },
+                body: JSON.stringify({ items }),
+            });
+            const { clientSecret } = yield response.json();
+            const appearance = {
+                theme: 'stripe',
+            };
+            elements = stripe.elements({ appearance, clientSecret });
+            const paymentElementOptions = {
+                layout: "tabs",
+            };
+            const paymentElement = elements.create("payment", paymentElementOptions);
+            paymentElement.mount("#payment-element");
+        });
+    }
+    ;
+    const form = document.querySelector("#payment-form");
+    form.addEventListener("submit", handleSubmit);
+    function handleSubmit(e) {
+        return __awaiter(this, void 0, void 0, function* () {
+            e.preventDefault();
+            setLoading(true);
+            let emailAddress = 'kirko190255@gmail.com';
+            const { error } = yield stripe.confirmPayment({
+                elements,
+                confirmParams: {
+                    return_url: returnURL,
+                    receipt_email: emailAddress,
+                },
+            });
+            if (error.type === "card_error" || error.type === "validation_error") {
+                showMessage(error.message);
+            }
+            else {
+                showMessage("An unexpected error occurred.");
+            }
+            setLoading(false);
+        });
+    }
+    ;
+    function checkStatus() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const clientSecret = new URLSearchParams(window.location.search).get("payment_intent_client_secret");
+            if (!clientSecret) {
+                return;
+            }
+            const { paymentIntent } = yield stripe.retrievePaymentIntent(clientSecret);
+            switch (paymentIntent.status) {
+                case "succeeded":
+                    showMessage("Payment succeeded!");
+                    break;
+                case "processing":
+                    showMessage("Your payment is processing.");
+                    break;
+                case "requires_payment_method":
+                    showMessage("Your payment was not successful, please try again.");
+                    break;
+                default:
+                    showMessage("Something went wrong.");
+                    break;
+            }
+        });
+    }
+    ;
+    function showMessage(messageText) {
+        const messageContainer = document.querySelector("#payment-message");
+        messageContainer.classList.remove("hidden");
+        messageContainer.textContent = messageText;
+        setTimeout(function () {
+            messageContainer.classList.add("hidden");
+            messageContainer.textContent = "";
+        }, 4000);
+    }
+    ;
+    function setLoading(isLoading) {
+        let sumbit_btn = document.querySelector('#submit');
+        let spinner = document.querySelector('#button-text2');
+        let buttonText = document.querySelector("#button-text");
+        if (isLoading) {
+            sumbit_btn.disabled = true;
+            buttonText.style.display = 'none';
+            spinner.style.display = 'block';
+        }
+        else {
+            sumbit_btn.disabled = false;
+            buttonText.style.display = 'block';
+            spinner.style.display = 'none';
+        }
+    }
+    ;
     let retrievedValue = localStorage.getItem('clipOff2');
     let total = localStorage.getItem('total');
     const dataString = localStorage.getItem('data');
@@ -16,18 +137,9 @@ document.addEventListener('DOMContentLoaded', function () {
     else {
         console.log('cart is empty');
     }
+    ;
     update_tt_prices(retrievedValue, total);
 });
-let thing = false;
-var stripe = Stripe('pk_test_51OF1EMH12wPbXhJ68EXbZb8FX8jjVv5JyuHndUyjiBj8bSnpWd5LvrfYy1WLLCuQkKkjDBGx3ZVPXcrZYVgznJ66002dk659Z8');
-var elements = stripe.elements();
-var cardNumber = elements.create('cardNumber');
-cardNumber.update({ placeholder: 'Vaild Card Number' });
-var cardExpiry = elements.create('cardExpiry');
-var cardCvc = elements.create('cardCvc');
-cardNumber.mount('#card-number-element');
-cardExpiry.mount('#card-expiry-element');
-cardCvc.mount('#card-cvc-element');
 let messages_msg = document.getElementById('messagesID');
 function show_message(message, seconds) {
     messages_msg.style.display = 'block';
@@ -74,8 +186,11 @@ function nextProcess() {
         checkINFO.style.color = productColor;
         line1.style.border = '2px solid ' + productColor;
         level = '2';
-        firstlevel.style.display = 'none';
-        secondlevel.style.display = 'block';
+        firstlevel.style.opacity = 0;
+        setTimeout(function () {
+            firstlevel.style.display = 'none';
+            secondlevel.style.display = 'block';
+        }, 1000);
         firstSlide_info.style.display = 'none';
         secondlide_info.style.display = 'block';
     }
@@ -408,29 +523,6 @@ const myDictionary = {
     Incorrect_Number: '4242424242424241',
     Normal_Scenario: '4242424242424242'
 };
-const cardformID = document.getElementById('card-formID');
-cardformID.addEventListener('submit', function (event) {
-    event.preventDefault();
-    console.log('checks');
-    let selected = document.getElementById('scenario_selectorID');
-    let selectedValue = selected.value;
-    if (selectedValue == 'Pick_Scenario') {
-        show_message('Must choose a valid card option', 4000);
-    }
-    else {
-        stripe.createToken(cardNumber).then(function (result) {
-            if (result.error) {
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-                show_message(errorElement, 5000);
-                console.log(result.token.id);
-            }
-            else {
-                sendStripeclient();
-            }
-        });
-    }
-});
 function update_card_details() {
     let infoBox = document.getElementById('inBox');
     let innerID = document.getElementById('user_option_choice');
@@ -462,6 +554,8 @@ function copy_number() {
     setTimeout(function () {
         let infoboxend = document.getElementById('inBox');
         infoboxend.style.display = 'none';
+        copy_icon.style.diplay = 'block';
+        check_icon.style.display = 'none';
     }, 6000);
 }
 ;
@@ -483,19 +577,3 @@ function copyToClipboard(text) {
     }
 }
 ;
-function sendStripeclient() {
-    stripe.confirmCardPayment('{{ client_secret }}', {
-        payment_method: {
-            card: cardNumber,
-        }
-    }).then(function (result) {
-        if (result.error) {
-            console.log(result.error.message);
-        }
-        else {
-            if (result.paymentIntent.status === 'succeeded') {
-                console.log("Payment succeeded!");
-            }
-        }
-    });
-}

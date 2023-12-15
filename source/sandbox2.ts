@@ -79,7 +79,6 @@ function processBtn() {
     }
 
     localStorage.setItem('total', totalcut.value)
-
 }
 
 

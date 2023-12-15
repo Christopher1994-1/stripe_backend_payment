@@ -1,5 +1,186 @@
+let returnURL:string = 'http://127.0.0.1:8000/successful_pay'
+
+
+//= ==/////===================================================================================================================
+//! Function that fires on load and gets the client secret before page loads
+
 document.addEventListener('DOMContentLoaded', function () {
 
+
+    //= ===================================================================================================================================
+    //* Code for setting up the stripe elements
+    var stripe:any = Stripe('pk_test_51OF1EMH12wPbXhJ68EXbZb8FX8jjVv5JyuHndUyjiBj8bSnpWd5LvrfYy1WLLCuQkKkjDBGx3ZVPXcrZYVgznJ66002dk659Z8');
+
+    // Create an instance of Elements
+    var elements:any = stripe.elements();
+
+    // Create an instance of the card number Element.
+    var cardNumber = elements.create('cardNumber');
+    cardNumber.update({placeholder: 'Vaild Card Number'});
+
+
+
+    // Create an instance of the expiration date Element.
+    var cardExpiry = elements.create('cardExpiry');
+
+    // Create an instance of the CVC Element.
+    var cardCvc = elements.create('cardCvc');
+
+    // Add the card elements into their respective containers
+    cardNumber.mount('#card-number-element');
+    cardExpiry.mount('#card-expiry-element');
+    cardCvc.mount('#card-cvc-element');
+
+    let items:any = ''
+    //===========================================================================================================================================
+
+
+
+
+    // Call initialize function
+    initialize();
+    checkStatus();
+
+
+
+    //! Stripe functions below
+    //===========================================================================================================================================
+    //* Fetches a payment intent and captures the client secret
+    async function initialize() {
+        const csrfToken:any = document.querySelector('[name=csrfmiddlewaretoken]');
+        const csrfValue = csrfToken.value;
+        const response = await fetch("/stripeIntentView", {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json",
+                'X-CSRFToken': csrfValue
+            },
+            body: JSON.stringify({ items }),
+        });
+        const { clientSecret } = await response.json();
+    
+        const appearance = {
+        theme: 'stripe',
+        };
+        elements = stripe.elements({ appearance, clientSecret });
+    
+        const paymentElementOptions = {
+        layout: "tabs",
+        };
+    
+        const paymentElement = elements.create("payment", paymentElementOptions);
+        paymentElement.mount("#payment-element");
+    };
+
+
+    const form:any = document.querySelector("#payment-form");
+
+    form.addEventListener("submit", handleSubmit);
+
+    //* function that handles the submit button
+    async function handleSubmit(e:any) {
+        e.preventDefault();
+        setLoading(true);
+      
+        let emailAddress:any = 'kirko190255@gmail.com'
+        const { error } = await stripe.confirmPayment({
+          elements,
+          confirmParams: {
+            // Make sure to change this to your payment completion page
+            return_url: returnURL,
+            receipt_email: emailAddress,
+          },
+        });
+      
+        // This point will only be reached if there is an immediate error when
+        // confirming the payment. Otherwise, your customer will be redirected to
+        // your `return_url`. For some payment methods like iDEAL, your customer will
+        // be redirected to an intermediate site first to authorize the payment, then
+        // redirected to the `return_url`.
+        if (error.type === "card_error" || error.type === "validation_error") {
+          showMessage(error.message);
+        } else {
+          showMessage("An unexpected error occurred.");
+        }
+      
+        setLoading(false);
+    };
+
+
+    // Fetches the payment intent status after payment submission
+    async function checkStatus() {
+        const clientSecret = new URLSearchParams(window.location.search).get(
+        "payment_intent_client_secret"
+        );
+    
+        if (!clientSecret) {
+        return;
+        }
+    
+        const { paymentIntent } = await stripe.retrievePaymentIntent(clientSecret);
+    
+        switch (paymentIntent.status) {
+        case "succeeded":
+            showMessage("Payment succeeded!");
+            break;
+        case "processing":
+            showMessage("Your payment is processing.");
+            break;
+        case "requires_payment_method":
+            showMessage("Your payment was not successful, please try again.");
+            break;
+        default:
+            showMessage("Something went wrong.");
+            break;
+        }
+    };
+
+
+    //* function that shows messages 
+    function showMessage(messageText:any) {
+    const messageContainer:any = document.querySelector("#payment-message");
+    
+    messageContainer.classList.remove("hidden");
+    messageContainer.textContent = messageText;
+    
+    setTimeout(function () {
+        messageContainer.classList.add("hidden");
+        messageContainer.textContent = "";
+    }, 4000);
+    };
+
+
+
+    // Show a spinner on payment submission
+    function setLoading(isLoading:any) {
+        let sumbit_btn:any = document.querySelector('#submit');
+        let spinner:any = document.querySelector('#button-text2');
+        let buttonText:any = document.querySelector("#button-text");
+
+        if (isLoading) {
+            // Disable the button and show a spinner
+            sumbit_btn.disabled = true;
+
+            buttonText.style.display = 'none';
+            spinner.style.display = 'block';
+
+        } else {
+            sumbit_btn.disabled = false;
+            buttonText.style.display = 'block';
+            spinner.style.display = 'none';
+        }
+    };
+
+    //================================================================================================================================
+    //! end of stripe functions
+
+
+
+
+
+
+
+    //================================================================================================================================
 
     let retrievedValue:any = localStorage.getItem('clipOff2');
     let total:any = localStorage.getItem('total');
@@ -17,43 +198,14 @@ document.addEventListener('DOMContentLoaded', function () {
         cart.innerHTML = l;
         cart2.innerHTML = l;
 
-    } 
+    }
     else {
         console.log('cart is empty')
-    }
+    };
 
-    update_tt_prices(retrievedValue, total)
       
+    update_tt_prices(retrievedValue, total)
 });
-
-
-
-//= Stripe stuff
-
-let thing:boolean = false;
-
-var stripe:any = Stripe('pk_test_51OF1EMH12wPbXhJ68EXbZb8FX8jjVv5JyuHndUyjiBj8bSnpWd5LvrfYy1WLLCuQkKkjDBGx3ZVPXcrZYVgznJ66002dk659Z8');
-
-// Create an instance of Elements
-var elements = stripe.elements();
-
-// Create an instance of the card number Element.
-var cardNumber = elements.create('cardNumber');
-cardNumber.update({placeholder: 'Vaild Card Number'});
-
-
-
-// Create an instance of the expiration date Element.
-var cardExpiry = elements.create('cardExpiry');
-
-// Create an instance of the CVC Element.
-var cardCvc = elements.create('cardCvc');
-
-// Add the card elements into their respective containers
-cardNumber.mount('#card-number-element');
-cardExpiry.mount('#card-expiry-element');
-cardCvc.mount('#card-cvc-element');
-
 
 
 
@@ -162,8 +314,20 @@ function nextProcess() {
         checkINFO.style.color = productColor;
         line1.style.border = '2px solid ' + productColor;
         level = '2';
-        firstlevel.style.display = 'none';
-        secondlevel.style.display = 'block';
+
+
+
+        firstlevel.style.opacity = 0;
+
+        setTimeout(function() {
+            firstlevel.style.display = 'none'
+
+            secondlevel.style.display = 'block';
+        }, 1000);
+
+
+
+
 
         firstSlide_info.style.display = 'none';
         secondlide_info.style.display = 'block';
@@ -197,6 +361,10 @@ function nextProcess() {
     // }
 
 };
+
+
+
+
 
 
 // = ///////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// //////////
@@ -783,7 +951,7 @@ function checking_phone_nameNXTBTN() {
 
 type BasicDictionary = {
     [key: string]: any;
-  };
+};
 
 
 const myDictionary: BasicDictionary = {
@@ -793,42 +961,7 @@ const myDictionary: BasicDictionary = {
     Incorrect_CVC: '4000000000000127',
     Incorrect_Number: '4242424242424241',
     Normal_Scenario: '4242424242424242'
-  };
-
-
-//. var for the form id
-const cardformID:any = document.getElementById('card-formID');
-
-
-//. event function for when form is submitted
-cardformID.addEventListener('submit', function (event:any) {
-    event.preventDefault();
-    console.log('checks')
-
-    //* element to get the selected option
-    let selected:any = document.getElementById('scenario_selectorID');
-    let selectedValue = selected.value;
-
-    if (selectedValue == 'Pick_Scenario') {
-        show_message('Must choose a valid card option', 4000)
-    } 
-    
-    else {
-        stripe.createToken(cardNumber).then(function (result:any) {
-            if (result.error) {
-                var errorElement:any = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-                show_message(errorElement, 5000)
-                console.log(result.token.id)
-
-            } 
-            else {
-                sendStripeclient()
-            }
-        });
-    }
-});
-
+};
 
 
 
@@ -897,9 +1030,9 @@ function copy_number() {
     setTimeout(function() {
         let infoboxend:any = document.getElementById('inBox');
         infoboxend.style.display = 'none';
+        copy_icon.style.diplay = 'block';
+        check_icon.style.display = 'none';
     }, 6000);
-    
-
 };
 
 
@@ -926,31 +1059,5 @@ function copyToClipboard(text:string) {
 };
 
 
-
-
-// TODO make pass in the client secret in the thing below
-
-//* function used to make AJAX request to server side to comfirm payment
-function sendStripeclient() {
-
-    stripe.confirmCardPayment('{{ client_secret }}', {
-        payment_method: {
-          card: cardNumber,
-          // Add other payment method details as needed
-        }
-      }).then(function(result:any) {
-        if (result.error) {
-          // Show error to your customer
-          console.log(result.error.message);
-        } else {
-          // The payment succeeded!
-          if (result.paymentIntent.status === 'succeeded') {
-            // Handle a successful payment here
-            console.log("Payment succeeded!");
-          }
-        }
-      });
-
-}
 
 //= //////////////////////////////////////////////// //////////////////////////////////////////////////////////////////// ///////////

@@ -1,0 +1,64 @@
+<div class="cart_display">
+    <h1>Shopping Cart</h1>
+
+    {% load static %}
+
+    <div class="shopping" id="shoppingID">
+            <table id="tableee">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in data %}
+                        <tr>
+                            <td> <img src="{% static i.2%}" alt=""> {{i.0}}</td>
+                            <td>${{i.1}}</td>
+                            <td>1</td>
+                            <td>${{i.1}}</td>
+                        </tr>
+                    {% endfor %}
+
+                    <!-- Add more rows for other products -->
+                </tbody>
+
+            </table>
+
+            <div class="subtotal">
+                <div class="promocode">
+                    <h5>Promotion Code</h5>
+                    <div class="stuff">
+                        <input type="text" name="" id="applycode" placeholder="JAJ439">
+                        <button onclick="applyBtn()">APPLY CODE</button>
+                    </div>
+                </div>
+                <div class="subtotal1">
+                    <h5>Cart Totals</h5>
+                    <div class="table1">
+
+                        <div class="t1">
+                            <p class="p1">Subtotal</p>
+                            <p class="p2" id="undercut">${{total}}</p>
+                        </div>
+
+                        <div class="t2">
+                            <p class="p1">Total</p>
+                            <p class="p2" id="totalcut">${{total}}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="submitbutton">
+                <input type="hidden" value="{{total}}, {{data}}">
+                <a href="{% url 'process_payment' %}" id="checkoutbtn" onclick="processBtn()">PROCEED TO CHECKOUT</a>
+            </div>
+    </div>
+    
+</div>

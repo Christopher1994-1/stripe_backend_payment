@@ -1,0 +1,17 @@
+<div class="newcheckout">
+
+    <form id="payment-form">
+        {% csrf_token %}
+        <div id="payment-element">
+          <!--Stripe.js injects the Payment Element-->
+          <div id="card-number-element"></div>
+          <div id="card-expiry-element"></div>
+          <div id="card-cvc-element"></div>
+        </div>
+        <button id="submit">
+          <div class="spinner hidden" id="spinner"></div>
+          <span id="button-text">Pay now</span>
+        </button>
+        <div id="payment-message" class="hidden"></div>
+      </form>
+</div>

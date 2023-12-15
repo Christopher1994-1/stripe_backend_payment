@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   background-color: #ffffff;
   padding: 0;
@@ -5,7 +6,7 @@ body {
 }
 
 .messages1 {
-  position: absolute;
+  position: fixed;
   top: 10%;
   left: 50%; /* Adjust left to 50% */
   transform: translate(-50%, -50%); /* Update transform property */
@@ -15,12 +16,33 @@ body {
   width: 80%;
   text-align: center;
   margin: auto;
+  z-index: 10;
   display: none;
 }
 .messages1 h5 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bolder;
   color: white;
+}
+
+.cart-container {
+  max-width: 600px;
+  margin: 50px auto;
+  text-align: center;
+}
+.cart-container h1 {
+  color: #333;
+}
+.cart-container .empty-cart-message {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+.cart-container .empty-cart-message p {
+  margin: 10px 0;
+  color: #555;
 }
 
 .navbar {
@@ -236,15 +258,20 @@ body {
 }
 .products_showcase .product {
   display: flex;
+  border-radius: 10px;
 }
 .products_showcase .product img {
   width: 200px;
   background: radial-gradient(circle, #1c5c9c, black); /* Adjust colors as needed */
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .products_showcase .product .info {
   padding: 5px;
   background: linear-gradient(to bottom, #4c4c4c, black);
   width: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .products_showcase .product .info h5 {
   color: white;
@@ -467,7 +494,10 @@ body {
   width: 95%;
   margin: auto;
   margin-top: 2%;
-  display: none;
+  background-color: rgba(28, 92, 156, 0.1725490196);
+  padding: 10px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
 .big .checkout .first_slide p {
   color: black;
@@ -490,6 +520,10 @@ body {
 .big .checkout .first_slide .firstNlast .first label span {
   font-weight: 200;
 }
+.big .checkout .first_slide .firstNlast .first input {
+  border: 1px solid rgba(12, 41, 70, 0.462745098);
+  padding: 5px;
+}
 .big .checkout .first_slide .firstNlast .first input:focus {
   outline: none;
 }
@@ -506,6 +540,10 @@ body {
 .big .checkout .first_slide .firstNlast .last input:focus {
   outline: none;
 }
+.big .checkout .first_slide .firstNlast .last input {
+  border: 1px solid rgba(12, 41, 70, 0.462745098);
+  padding: 5px;
+}
 .big .checkout .first_slide .street-address {
   display: flex;
   flex-direction: column;
@@ -519,6 +557,10 @@ body {
 }
 .big .checkout .first_slide .street-address input:focus {
   outline: none;
+}
+.big .checkout .first_slide .street-address input {
+  border: 1px solid rgba(12, 41, 70, 0.462745098);
+  padding: 5px;
 }
 .big .checkout .first_slide .labelbox {
   margin-top: 10px;
@@ -543,6 +585,10 @@ body {
 .big .checkout .first_slide .zipCode_city .first input:focus {
   outline: none;
 }
+.big .checkout .first_slide .zipCode_city .first input {
+  border: 1px solid rgba(12, 41, 70, 0.462745098);
+  padding: 5px;
+}
 .big .checkout .first_slide .zipCode_city .last {
   display: flex;
   flex-direction: column;
@@ -556,10 +602,19 @@ body {
 .big .checkout .first_slide .zipCode_city .last input:focus {
   outline: none;
 }
+.big .checkout .first_slide .zipCode_city .last input {
+  border: 1px solid rgba(12, 41, 70, 0.462745098);
+  padding: 5px;
+}
 .big .checkout .second_slide {
-  width: 85%;
+  width: 95%;
   margin: auto;
   margin-top: 2%;
+  background-color: rgba(28, 92, 156, 0.1725490196);
+  padding: 10px;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  display: none;
 }
 .big .checkout .second_slide p {
   color: black;
@@ -569,50 +624,14 @@ body {
   width: 95%;
   margin: auto;
 }
-.big .checkout .second_slide label {
+.big .checkout .second_slide #submit {
+  padding: 10px;
+  width: 80%;
+  border: none;
+  background-color: #1c5c9c;
+  color: white;
   font-weight: bold;
-}
-.big .checkout .second_slide label span {
-  font-weight: 200;
-}
-.big .checkout .second_slide .cardnumber {
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  margin: auto;
-  margin-top: 2%;
-  text-align: left;
-}
-.big .checkout .second_slide .cardnumber #card-number-element {
-  border: 1px solid rgb(153, 153, 153);
-  padding: 5px;
-}
-.big .checkout .second_slide .ex_cvc {
-  display: flex;
-  justify-content: space-between;
-  width: 95%;
-  margin: auto;
-  margin-top: 2%;
-  text-align: left;
-}
-.big .checkout .second_slide .ex_cvc #card-expiry-element {
-  border: 1px solid rgb(153, 153, 153);
-  padding: 5px;
-}
-.big .checkout .second_slide .ex_cvc #card-cvc-element {
-  border: 1px solid rgb(153, 153, 153);
-  padding: 5px;
-}
-.big .checkout .second_slide .card_number_name {
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  margin: auto;
-  margin-top: 2%;
-  text-align: left;
-}
-.big .checkout .second_slide .carderror {
-  border: 1px solid red;
+  border-radius: 10px;
 }
 .big .subtotal {
   width: 45%;
@@ -734,7 +753,7 @@ body {
   font-weight: 500;
   color: #1c5c9c;
 }
-.big .subtotal .info_about_page .firstSlide {
+.big .subtotal .info_about_page .secondSlide {
   display: none;
 }
 .big .subtotal .info_about_page .secondSlide .picksascene {
@@ -770,6 +789,182 @@ body {
   width: 200px;
 }
 
+.how_it_works {
+  width: 80%;
+  margin: auto;
+  margin-top: 4%;
+}
+.how_it_works .section {
+  width: 100%;
+  margin: 2em auto;
+  padding: 1em;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.how_it_works .section h2 {
+  color: #333;
+  font-size: 20px;
+}
+.how_it_works .section footer {
+  text-align: center;
+  padding: 1em;
+  background-color: #333;
+  color: #fff;
+}
+.how_it_works .section #step1 {
+  background-color: #e6f7ff;
+}
+.how_it_works .section #step2 {
+  background-color: #f2f2f2;
+}
+.how_it_works .section #step3 {
+  background-color: #e6f7ff;
+}
+.how_it_works .section #step4 {
+  background-color: #f2f2f2;
+}
+.how_it_works .section #step5 {
+  background-color: #e6f7ff;
+}
+
+.aboutproject {
+  font-family: "Arial", sans-serif;
+  width: 90%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 4%;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.aboutproject h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.aboutproject h5 {
+  color: #555;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.aboutproject p {
+  color: #777;
+  line-height: 1.5;
+}
+.aboutproject hr {
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+.aboutproject #keyfeatures {
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+.aboutproject h5.key-feature {
+  color: #3498db;
+}
+.aboutproject .key-features {
+  list-style: none;
+  padding: 0;
+}
+.aboutproject .key-features li {
+  margin-bottom: 10px;
+}
+.aboutproject .key-features li:before {
+  content: "✓ ";
+  color: #2ecc71;
+  font-weight: bold;
+}
+.aboutproject .technology-stack {
+  margin-top: 20px;
+}
+.aboutproject .technology-stack h5 {
+  color: #3498db;
+}
+.aboutproject .technology-stack p {
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#payment-message {
+  color: rgb(105, 115, 134);
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 12px;
+  text-align: center;
+}
+
+#payment-element {
+  margin-bottom: 24px;
+}
+
+/* spinner/processing state, errors */
+.spinner,
+.spinner:before,
+.spinner:after {
+  border-radius: 50%;
+}
+
+.spinner {
+  color: #ffffff;
+  font-size: 22px;
+  text-indent: -99999px;
+  margin: 0px auto;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  box-shadow: inset 0 0 0 2px;
+  transform: translateZ(0);
+}
+
+.spinner:before,
+.spinner:after {
+  position: absolute;
+  content: "";
+}
+
+.spinner:before {
+  width: 10.4px;
+  height: 20.4px;
+  background: #5469d4;
+  border-radius: 20.4px 0 0 20.4px;
+  top: -0.2px;
+  left: -0.2px;
+  transform-origin: 10.4px 10.2px;
+  animation: loading 2s infinite ease 1.5s;
+}
+
+.spinner:after {
+  width: 10.4px;
+  height: 10.2px;
+  background: #5469d4;
+  border-radius: 0 10.2px 10.2px 0;
+  top: -0.1px;
+  left: 10.2px;
+  transform-origin: 0px 10.2px;
+  animation: loading 2s infinite ease;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media only screen and (max-width: 600px) {
+  form {
+    width: 80vw;
+    min-width: initial;
+  }
+}
 /* For WebKit browsers like Chrome and Safari */
 .info_about_page::-webkit-scrollbar {
   width: 12px; /* You can change this to make the scrollbar wider or narrower */
