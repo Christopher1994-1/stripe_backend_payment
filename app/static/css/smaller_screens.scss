@@ -4,9 +4,7 @@ $borderBlackDotted: 2px dotted black;
 $borderWhiteDotted: 2px dotted white;
 $navyBlue:#021F3C;
 $productBlue:#1c5c9c;
-
-
-
+$inputBorder: 1px solid #0c294676;
 
 
 
@@ -84,6 +82,25 @@ $productBlue:#1c5c9c;
             }
         }
     }
+
+
+
+    .big {
+        width: 95%;
+    
+        .subtotal {
+    
+            .buttons {
+                flex-direction: column;
+    
+                button {
+                    width: 80%;
+                    margin-top: 2%;
+                }
+            }
+        }
+    
+    }
 }
 
 
@@ -142,6 +159,143 @@ $productBlue:#1c5c9c;
     
     }
 }
+
+
+
+
+@media(max-width:853px) {
+
+
+    .big {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        width: 95%;
+        margin: auto;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    
+        .checkout {
+            text-align: center;
+            width: 95%;
+            margin: auto;
+
+        
+            .first_slide {
+                text-align: left;
+                width: 95%;
+                margin: auto;
+                margin-top: 2%;
+                background-color: #1c5c9c2c;
+                padding: 10px;
+                opacity: 1;
+                transition: opacity 1s ease-in-out;
+    
+        
+                .firstNlast {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    column-gap: 10px;
+                    row-gap: 10px;
+    
+                }
+    
+    
+                .zipCode_city {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    column-gap: 10px;
+                    margin-top: 10px;
+                }
+            }
+        
+        }
+    
+        .subtotal {
+            width: 95%;
+            display: flex;
+            flex-direction: column;
+            background-color: #efefef;
+    
+            .order_stuff {
+                display: none;
+    
+            }
+    
+            .invisible_info_div {
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.915);
+                padding: 10px;
+                display: none;
+    
+    
+                h5 {
+                    color: white;
+                }
+    
+                p {
+                    color: white;
+    
+                }
+    
+                #user_option_choice {
+                    color: #73b1ef;
+                }
+    
+    
+                .cardnum {
+                    display: flex;
+                    
+                    .kis {
+                        color: white;
+                    }
+    
+                    i {
+                        color: white;
+                        cursor: pointer;
+                        margin-left: 5px;
+                    }
+    
+                    #number_copied {
+                        display: none;
+                    }
+                }
+            }
+    
+            .info_about_page {
+                margin-left: 20px;
+                max-height: 240px;
+                overflow: auto;
+                width: 90%;
+                padding: 10px;
+                border: 1px solid grey;
+                background-color: white;
+                margin: auto;
+                margin-top: 4%;
+                margin-bottom: 4%;
+    
+                span {
+                    font-weight: 500;
+                    color: $productBlue;
+                }
+    
+    
+    
+            }
+    
+            .buttons {
+                display: flex;
+                flex-direction: column;
+                justify-content: left;
+                text-align: center;
+                margin-left: 10px;
+    
+            }
+        }
+    
+    }
+}
+
 
 
 

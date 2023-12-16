@@ -168,6 +168,7 @@ body {
     justify-content: space-around;
     align-items: center;
     background-color: $navyBlue;
+    padding: 10px;
     display: none;
 
 
@@ -518,7 +519,6 @@ body {
 
 .big {
     display: flex;
-    border: $borderBlack;
     justify-content: space-around;
     width: 85%;
     margin: auto;
@@ -970,6 +970,7 @@ body {
                 background-color: $productBlue;
                 text-decoration: none;
                 color: white;
+                font-weight: bold;
                 padding: 10px;
                 font-size: 13px;
                 width: 200px;
@@ -978,6 +979,12 @@ body {
     }
 
 }
+
+
+
+
+
+
 
 .how_it_works {
     width: 80%;

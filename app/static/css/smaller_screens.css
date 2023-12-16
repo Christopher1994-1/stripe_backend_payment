@@ -50,6 +50,16 @@
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 5px;
   }
+  .big {
+    width: 95%;
+  }
+  .big .subtotal .buttons {
+    flex-direction: column;
+  }
+  .big .subtotal .buttons button {
+    width: 80%;
+    margin-top: 2%;
+  }
 }
 @media (max-width: 1000px) {
   .navbar .firstSide {
@@ -78,6 +88,107 @@
   }
   .checkout .underballs {
     width: 75%;
+  }
+}
+@media (max-width: 853px) {
+  .big {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+  .big .checkout {
+    text-align: center;
+    width: 95%;
+    margin: auto;
+  }
+  .big .checkout .first_slide {
+    text-align: left;
+    width: 95%;
+    margin: auto;
+    margin-top: 2%;
+    background-color: rgba(28, 92, 156, 0.1725490196);
+    padding: 10px;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+  .big .checkout .first_slide .firstNlast {
+    display: grid;
+    grid-template-columns: 1fr;
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+    row-gap: 10px;
+  }
+  .big .checkout .first_slide .zipCode_city {
+    display: grid;
+    grid-template-columns: 1fr;
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+    margin-top: 10px;
+  }
+  .big .subtotal {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    background-color: #efefef;
+  }
+  .big .subtotal .order_stuff {
+    display: none;
+  }
+  .big .subtotal .invisible_info_div {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.915);
+    padding: 10px;
+    display: none;
+  }
+  .big .subtotal .invisible_info_div h5 {
+    color: white;
+  }
+  .big .subtotal .invisible_info_div p {
+    color: white;
+  }
+  .big .subtotal .invisible_info_div #user_option_choice {
+    color: #73b1ef;
+  }
+  .big .subtotal .invisible_info_div .cardnum {
+    display: flex;
+  }
+  .big .subtotal .invisible_info_div .cardnum .kis {
+    color: white;
+  }
+  .big .subtotal .invisible_info_div .cardnum i {
+    color: white;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  .big .subtotal .invisible_info_div .cardnum #number_copied {
+    display: none;
+  }
+  .big .subtotal .info_about_page {
+    margin-left: 20px;
+    max-height: 240px;
+    overflow: auto;
+    width: 90%;
+    padding: 10px;
+    border: 1px solid grey;
+    background-color: white;
+    margin: auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+  }
+  .big .subtotal .info_about_page span {
+    font-weight: 500;
+    color: #1c5c9c;
+  }
+  .big .subtotal .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: center;
+    margin-left: 10px;
   }
 }
 @media (max-width: 760px) {

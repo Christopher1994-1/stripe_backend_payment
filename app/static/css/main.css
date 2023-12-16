@@ -125,6 +125,7 @@ body {
   justify-content: space-around;
   align-items: center;
   background-color: #021F3C;
+  padding: 10px;
   display: none;
 }
 .navbar2 .hamburgerMenu {
@@ -407,7 +408,6 @@ body {
 
 .big {
   display: flex;
-  border: 2px solid black;
   justify-content: space-around;
   width: 85%;
   margin: auto;
@@ -784,6 +784,7 @@ body {
   background-color: #1c5c9c;
   text-decoration: none;
   color: white;
+  font-weight: bold;
   padding: 10px;
   font-size: 13px;
   width: 200px;
