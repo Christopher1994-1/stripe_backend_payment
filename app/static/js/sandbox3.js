@@ -530,6 +530,7 @@ function update_card_details() {
     let selected = document.getElementById('scenario_selectorID');
     let selectedValue = selected.value;
     let selectedValue_split = selectedValue.toString().split('_').join(' ');
+    let copy_icon = document.getElementById('non_copy');
     let card_choice = myDictionary[selectedValue];
     if (selectedValue == 'Pick_Scenario') {
         show_message('Must choose a valid card option', 4000);
@@ -539,6 +540,7 @@ function update_card_details() {
         infoBox.style.display = 'block';
         innerID.innerHTML = selectedValue_split;
         user_cardHolder.innerHTML = card_choice;
+        copy_icon.style.display = 'block';
     }
 }
 ;

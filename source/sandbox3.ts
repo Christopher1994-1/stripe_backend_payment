@@ -984,6 +984,10 @@ function update_card_details() {
     let selectedValue_split = selectedValue.toString().split('_').join(' ');
 
 
+        //* element for the copy icon
+        let copy_icon:any = document.getElementById('non_copy');
+
+
 
 
     //* getting the card number based on user option
@@ -999,6 +1003,7 @@ function update_card_details() {
         infoBox.style.display = 'block';
         innerID.innerHTML = selectedValue_split;
         user_cardHolder.innerHTML = card_choice;
+        copy_icon.style.display = 'block';
     }
 
 };
@@ -1034,7 +1039,6 @@ function copy_number() {
         check_icon.style.display = 'none';
     }, 6000);
 };
-
 
 
 
